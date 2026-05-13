@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Survey of China - Study Guide 2025</title>
+    <style>
+        /* DARK THEME VARIABLES */
+        :root {
+            --bg-main: #121212;
+            --bg-card: #1e1e1e;
+            --bg-input: #2c2c2c;
+            --primary: #d32f2f; /* Subtle China Red */
+            --primary-hover: #b71c1c;
+            --text-main: #e0e0e0;
+            --text-muted: #9e9e9e;
+            --border-color: #333333;
+            
+            /* Feedback colors for Dark Mode */
+            --correct-bg: rgba(46, 125, 50, 0.2);
+            --correct-border: #4caf50;
+            --correct-text: #81c784;
+            --incorrect-bg: rgba(198, 40, 40, 0.2);
+            --incorrect-border: #ef5350;
+            --incorrect-text: #e57373;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 15px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-color);
+        }
+
+        h1, h2 { color: var(--primary); text-align: center; margin-bottom: 10px; }
+        p.subtitle { text-align: center; color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem; }
+
+        /* BUTTONS */
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+        .btn:hover:not(:disabled) { background-color: var(--primary-hover); }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        
+        .btn-cancel { background-color: #424242; margin-top: 20px; }
+        .btn-cancel:hover:not(:disabled) { background-color: #616161; }
+
+        /* MENU GRID */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        @media (min-width: 600px) {
+            .menu-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .hidden { display: none !important; }
+
+        /* QUIZ ELEMENTS */
+        .progress-bar { text-align: right; font-weight: bold; color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem; }
+        
+        .question-card {
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background-color: var(--bg-input);
+        }
+        
+        .reference {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            background-color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .question-text { font-size: 1.1rem; margin-bottom: 20px; }
+
+        /* OPTIONS LIST (MC & TF) */
+        .options-list { list-style: none; }
+        .options-list li { margin: 10px 0; }
+        .options-list button {
+            background: var(--bg-card);
+            color: var(--text-main);
+            border: 2px solid var(--border-color);
+            text-align: left;
+            font-weight: normal;
+        }
+        .options-list button:hover:not(:disabled) {
+            border-color: var(--primary);
+            background: var(--bg-input);
+        }
+
+        /* TEXTAREAS FOR ESSAY/DEF */
+        textarea {
+            width: 100%;
+            height: 120px;
+            margin-top: 10px;
+            padding: 15px;
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 16px;
+            resize: vertical;
+        }
+        textarea:focus { border-color: var(--primary); outline: none; }
+
+        /* FEEDBACK SECTIONS */
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .correct { background-color: var(--correct-bg); border: 1px solid var(--correct-border); color: var(--text-main); }
+        .incorrect { background-color: var(--incorrect-bg); border: 1px solid var(--incorrect-border); color: var(--text-main); }
+        
+        .correct-title { color: var(--correct-text); font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; display: block;}
+        .incorrect-title { color: var(--incorrect-text); font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; display: block;}
+
+        .answer-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            font-size: 0.95rem;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* NAVIGATION BUTTONS */
+        .nav-buttons { margin-top: 20px; }
+
+        /* PDF VIEWER MODAL */
+        #btn-pdf-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            cursor: pointer;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+            padding: 20px;
+            flex-direction: column;
+        }
+        .pdf-modal.active { display: flex; }
+        .pdf-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .pdf-header h3 { color: white; margin: 0; }
+        .close-pdf {
+            background: #424242;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        iframe {
+            flex-grow: 1;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            background-color: white; /* PDF viewer needs white bg usually */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Survey of China</h1>
+    <p class="subtitle">Study Guide & Training Platform - Fall 2025</p>
+
+    <!-- MAIN MENU -->
+    <div id="main-menu">
+        <h2>Select Study Mode</h2>
+        <div class="menu-grid">
+            <button class="btn" onclick="startQuiz('tf')">1. True or False</button>
+            <button class="btn" onclick="startQuiz('mc')">2. Multiple Choice</button>
+            <button class="btn" onclick="startQuiz('def')">3. Term Definitions</button>
+            <button class="btn" onclick="startQuiz('exp')">4. Essay & Explanations</button>
+        </div>
+    </div>
+
+    <!-- QUIZ SECTION -->
+    <div id="quiz-section" class="hidden">
+        <h2 id="quiz-title">Quiz Title</h2>
+        <div class="progress-bar" id="progress-text">Question 1 of X</div>
+        
+        <div id="question-container"></div>
+        
+        <div class="nav-buttons">
+            <button class="btn" id="btn-next" onclick="nextQuestion()" style="display: none;">Next Question ➔</button>
+        </div>
+        <button class="btn btn-cancel" onclick="returnToMenu()">End Practice & Return</button>
+    </div>
+</div>
+
+<!-- FLOATING PDF BUTTON -->
+<button id="btn-pdf-toggle" onclick="togglePDF()" title="Open Study Guide PDF">📄</button>
+
+<!-- PDF MODAL -->
+<div id="pdf-modal" class="pdf-modal">
+    <div class="pdf-header">
+        <h3>Reference PDF</h3>
+        <button class="close-pdf" onclick="togglePDF()">Close (X)</button>
+    </div>
+    <!-- 
+      INSTRUCTIONS FOR GITHUB: 
+      Upload your PDF file to the same folder in GitHub and name it 'study_guide.pdf'. 
+      If it has a different name, change the 'src' attribute below.
+    -->
+    <iframe src="study_guide.pdf"></iframe>
+</div>
+
+<!-- External Knowledge Base -->
+<script src="questions.js"></script>
+
+<script>
+    let currentMode = '';
+    let currentIndex = 0;
+    let currentArray = [];
+
+    const modeTitles = {
+        'tf': 'True or False',
+        'mc': 'Multiple Choice',
+        'def': 'Term Definitions',
+        'exp': 'Essay & Explanations'
+    };
+
+    function startQuiz(mode) {
+        currentMode = mode;
+        // Clone array to avoid modifying original data
+        currentArray = [...knowledgeBase[mode]]; 
+        // Shuffle questions for dynamic practice
+        currentArray.sort(() => Math.random() - 0.5); 
+        
+        currentIndex = 0;
+        
+        document.getElementById('main-menu').classList.add('hidden');
+        document.getElementById('quiz-section').classList.remove('hidden');
+        document.getElementById('quiz-title').innerText = modeTitles[mode];
+        
+        renderQuestion();
+    }
+
+    function returnToMenu() {
+        document.getElementById('quiz-section').classList.add('hidden');
+        document.getElementById('main-menu').classList.remove('hidden');
+    }
+
+    function nextQuestion() {
+        currentIndex++;
+        if (currentIndex >= currentArray.length) {
+            alert("Congratulations! You have completed all questions in this section.");
+            returnToMenu();
+        } else {
+            renderQuestion();
+        }
+    }
+
+    function renderQuestion() {
+        document.getElementById('progress-text').innerText = `Question ${currentIndex + 1} of ${currentArray.length}`;
+        
+        const container = document.getElementById('question-container');
+        container.innerHTML = ''; 
+        
+        const item = currentArray[currentIndex];
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        
+        const refSpan = document.createElement('span');
+        refSpan.className = 'reference';
+        refSpan.innerText = `Reference: ${item.ref}`;
+        card.appendChild(refSpan);
+
+        if (currentMode === 'tf') {
+            const qText = document.createElement('div');
+            qText.className = 'question-text';
+            qText.innerHTML = `<strong>Question:</strong> ${item.q}`;
+            card.appendChild(qText);
+            
+            const list = document.createElement('ul');
+            list.className = 'options-list';
+            
+            const btnT = document.createElement('button');
+            btnT.className = 'btn';
+            btnT.innerText = 'True';
+            btnT.onclick = () => checkTF(true, item.a, item.exp, card, btnT, btnF);
+            
+            const btnF = document.createElement('button');
+            btnF.className = 'btn';
+            btnF.innerText = 'False';
+            btnF.onclick = () => checkTF(false, item.a, item.exp, card, btnF, btnT);
+            
+            const liT = document.createElement('li'); liT.appendChild(btnT);
+            const liF = document.createElement('li'); liF.appendChild(btnF);
+
+            list.appendChild(liT);
+            list.appendChild(liF);
+            card.appendChild(list);
+
+        } else if (currentMode === 'mc') {
+            const qText = document.createElement('div');
+            qText.className = 'question-text';
+            qText.innerHTML = `<strong>Question:</strong> ${item.q}`;
+            card.appendChild(qText);
+            
+            const list = document.createElement('ul');
+            list.className = 'options-list';
+            item.options.forEach((opt, idx) => {
+                const li = document.createElement('li');
+                const btn = document.createElement('button');
+                btn.className = 'btn';
+                btn.innerText = opt;
+                btn.onclick = () => checkMC(idx, item.answer, item.exp, list, card);
+                li.appendChild(btn);
+                list.appendChild(li);
+            });
+            card.appendChild(list);
+
+        } else if (currentMode === 'def') {
+            const qText = document.createElement('div');
+            qText.className = 'question-text';
+            qText.innerHTML = `<strong>Define the following term:</strong><br><br><span style="color:var(--primary); font-size:1.4rem; font-weight:bold;">${item.term}</span>`;
+            card.appendChild(qText);
+            
+            const textarea = document.createElement('textarea');
+            textarea.placeholder = "Draft your definition here to practice before revealing the correct answer...";
+            card.appendChild(textarea);
+            
+            const btnShow = document.createElement('button');
+            btnShow.className = 'btn';
+            btnShow.style.marginTop = '15px';
+            btnShow.innerText = 'Reveal Correct Definition';
+            btnShow.onclick = () => showAnswerBox(item.def, card, btnShow);
+            card.appendChild(btnShow);
+
+        } else if (currentMode === 'exp') {
+            const qText = document.createElement('div');
+            qText.className = 'question-text';
+            qText.innerHTML = `<strong>Essay Question:</strong><br><br>${item.q}`;
+            card.appendChild(qText);
+            
+            const textarea = document.createElement('textarea');
+            textarea.placeholder = "Draft your detailed explanation here...";
+            card.appendChild(textarea);
+            
+            const btnShow = document.createElement('button');
+            btnShow.className = 'btn';
+            btnShow.style.marginTop = '15px';
+            btnShow.innerText = 'Reveal Key Answer Points';
+            btnShow.onclick = () => showAnswerBox(item.ans, card, btnShow);
+            card.appendChild(btnShow);
+        }
+        
+        container.appendChild(card);
+        
+        const btnNext = document.getElementById('btn-next');
+        if (currentMode === 'def' || currentMode === 'exp') {
+            btnNext.style.display = 'block';
+        } else {
+            btnNext.style.display = 'none';
+        }
+    }
+
+    function checkTF(userAns, correctAns, explanation, card, clickedBtn, otherBtn) {
+        disableButtons(card);
+        
+        if (userAns === correctAns) {
+            clickedBtn.style.borderColor = "var(--correct-border)";
+            clickedBtn.style.backgroundColor = "rgba(46, 125, 50, 0.4)";
+        } else {
+            clickedBtn.style.borderColor = "var(--incorrect-border)";
+            clickedBtn.style.backgroundColor = "rgba(198, 40, 40, 0.4)";
+            otherBtn.style.borderColor = "var(--correct-border)";
+            otherBtn.style.backgroundColor = "rgba(46, 125, 50, 0.4)";
+        }
+
+        const isCorrect = userAns === correctAns;
+        const feedback = document.createElement('div');
+        feedback.className = 'feedback ' + (isCorrect ? 'correct' : 'incorrect');
+        
+        const titleClass = isCorrect ? 'correct-title' : 'incorrect-title';
+        const titleText = isCorrect ? '✓ Correct!' : '✗ Incorrect.';
+        
+        feedback.innerHTML = `<span class="${titleClass}">${titleText}</span><strong>Explanation:</strong> ${explanation}`;
+        card.appendChild(feedback);
+        
+        document.getElementById('btn-next').style.display = 'block';
+    }
+
+    function checkMC(userIdx, correctIdx, explanation, listElement, card) {
+        disableButtons(card);
+        const buttons = listElement.querySelectorAll('button');
+        
+        buttons.forEach((btn, idx) => {
+            if (idx === correctIdx) {
+                btn.style.borderColor = "var(--correct-border)";
+                btn.style.backgroundColor = "rgba(46, 125, 50, 0.4)";
+            } else if (idx === userIdx && userIdx !== correctIdx) {
+                btn.style.borderColor = "var(--incorrect-border)";
+                btn.style.backgroundColor = "rgba(198, 40, 40, 0.4)";
+                btn.style.opacity = "0.5";
+            } else {
+                btn.style.opacity = "0.3";
+            }
+        });
+        
+        const isCorrect = userIdx === correctIdx;
+        const feedback = document.createElement('div');
+        feedback.className = 'feedback ' + (isCorrect ? 'correct' : 'incorrect');
+        
+        const titleClass = isCorrect ? 'correct-title' : 'incorrect-title';
+        const titleText = isCorrect ? '✓ Correct!' : '✗ Incorrect. Review the highlighted answer.';
+        
+        // If explanation exists in the knowledge base for MC, display it. Otherwise just show correct/incorrect.
+        let expHtml = explanation ? `<br><br><strong>Explanation:</strong> ${explanation}` : '';
+        feedback.innerHTML = `<span class="${titleClass}">${titleText}</span>${expHtml}`;
+        card.appendChild(feedback);
+        
+        document.getElementById('btn-next').style.display = 'block';
+    }
+
+    function showAnswerBox(text, card, btnElement) {
+        btnElement.style.display = 'none'; 
+        const box = document.createElement('div');
+        box.className = 'answer-box';
+        box.innerHTML = `<strong style="color:var(--primary);">Correct Information:</strong><br><br>${text}`;
+        card.appendChild(box);
+    }
+
+    function disableButtons(card) {
+        const buttons = card.querySelectorAll('.options-list button');
+        buttons.forEach(btn => {
+            btn.disabled = true;
+        });
+    }
+
+    // PDF Toggle Logic
+    function togglePDF() {
+        const modal = document.getElementById('pdf-modal');
+        modal.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
