@@ -233,6 +233,7 @@
             <button class="btn" onclick="startQuiz('mc')">2. Multiple Choice</button>
             <button class="btn" onclick="startQuiz('def')">3. Term Definitions</button>
             <button class="btn" onclick="startQuiz('exp')">4. Essay & Explanations</button>
+            <button class="btn" onclick="startExam()">5. Mode Examen</button>
         </div>
     </div>
 
@@ -496,6 +497,121 @@
         const modal = document.getElementById('pdf-modal');
         modal.classList.toggle('active');
     }
+
+
+    let examData = {}; // Will store the randomly selected questions
+
+function startExam() {
+    // 1. Clear the container and hide the main menu
+    document.getElementById('main-menu').classList.add('hidden');
+    const container = document.getElementById('quiz-section');
+    container.classList.remove('hidden');
+    container.innerHTML = '<h2 id="quiz-title">Official Exam: Survey of China</h2>';
+    
+    // 2. Random selection of questions based on your requirements
+    examData = {
+        mc: getRandom(knowledgeBase.mc, 20),
+        tf: getRandom(knowledgeBase.tf, 10),
+        def: getRandom(knowledgeBase.def, 2),
+        exp: getRandom(knowledgeBase.exp, 6) // 6 are shown, but the student chooses 3
+    };
+
+    // 3. Generate the HTML for the Exam
+    let examHTML = `<div class="exam-sheet">`;
+
+    // PART 1: Multiple Choice (40 pts)
+    examHTML += `<h3 style="color:var(--primary); margin-top:20px;">Part 1: Multiple Choice (20 items - 40 pts)</h3>`;
+    examData.mc.forEach((q, i) => {
+        examHTML += `
+            <div class="question-card">
+                <p><strong>${i+1}. ${q.q}</strong></p>
+                <ul class="options-list" style="list-style:none; padding-left:0;">
+                ${q.options.map((opt, optIdx) => `
+                    <li style="margin: 5px 0;">
+                        <label style="cursor:pointer;">
+                            <input type="radio" name="mc_${i}" value="${optIdx}"> ${opt}
+                        </label>
+                    </li>
+                `).join('')}
+                </ul>
+            </div>`;
+    });
+
+    // PART 2: True or False (20 pts)
+    examHTML += `<h3 style="color:var(--primary); margin-top:20px;">Part 2: True or False (10 items - 20 pts)</h3>`;
+    examData.tf.forEach((q, i) => {
+        examHTML += `
+            <div class="question-card">
+                <p><strong>${i+1}. ${q.q}</strong></p>
+                <label style="cursor:pointer; margin-right: 15px;"><input type="radio" name="tf_${i}" value="true"> True</label>
+                <label style="cursor:pointer;"><input type="radio" name="tf_${i}" value="false"> False</label>
+            </div>`;
+    });
+
+    // PART 3: Term Definitions (10 pts)
+    examHTML += `<h3 style="color:var(--primary); margin-top:20px;">Part 3: Term Definitions (Define 2 items - 10 pts)</h3>`;
+    examData.def.forEach((q, i) => {
+        examHTML += `
+            <div class="question-card">
+                <p style="font-size:1.2rem; color:var(--primary);"><strong>${q.term}</strong></p>
+                <textarea id="def_text_${i}" placeholder="Write your definition here..."></textarea>
+                <div id="def_ans_${i}" class="answer-box" style="display:none; margin-top:10px;">
+                    <strong style="color:var(--correct-text);">Correct Definition:</strong> ${q.def}
+                </div>
+            </div>`;
+    });
+
+    // PART 4: Essay Questions (30 pts)
+    examHTML += `<h3 style="color:var(--primary); margin-top:20px;">Part 4: Essay Questions (Choose 3 of 6 - 30 pts)</h3>`;
+    examData.exp.forEach((q, i) => {
+        examHTML += `
+            <div class="question-card">
+                <p><strong>Option ${i+1}:</strong> ${q.q}</p>
+                <textarea id="exp_text_${i}" placeholder="Write your explanation here..."></textarea>
+                <div id="exp_ans_${i}" class="answer-box" style="display:none; margin-top:10px;">
+                    <strong style="color:var(--correct-text);">Key Points to Include:</strong> ${q.ans}
+                </div>
+            </div>`;
+    });
+
+    // Submit button and Return button
+    examHTML += `
+        <button class="btn" style="margin-top:20px; background-color:#2e7d32;" onclick="gradeExam()">Finish and Grade Exam</button>
+        <button class="btn btn-cancel" onclick="location.reload()">Cancel and Return to Menu</button>
+    </div>`;
+    
+    container.innerHTML += examHTML;
+    window.scrollTo(0, 0); // Scroll to the top
+}
+
+// Helper function to get random elements from an array
+function getRandom(arr, n) {
+    let shuffled = [...arr].sort(() => 0.5 - Math.random());
+    // In case the array has fewer elements than requested
+    return shuffled.slice(0, Math.min(n, shuffled.length)); 
+}
+
+function gradeExam() {
+    let score = 0;
+    
+    // Grade Multiple Choice
+    examData.mc.forEach((q, i) => {
+        const selected = document.querySelector(`input[name="mc_${i}"]:checked`);
+        // Using q.answer based on your questions.js structure
+        if(selected && parseInt(selected.value) === q.answer) score += 2;
+    });
+
+    // Grade True or False
+    examData.tf.forEach((q, i) => {
+        const selected = document.querySelector(`input[name="tf_${i}"]:checked`);
+        if(selected && (selected.value === 'true') === q.a) score += 2;
+    });
+
+    // Show the official answers for the written parts
+    document.querySelectorAll('.answer-box').forEach(el => el.style.display = 'block');
+    
+    alert(`Your automatic score (MC + TF) is: ${score} / 60.\n\nNow, scroll down to compare your written answers with the official guides. Add your points manually for the remaining 40 points.`);
+}
 </script>
 
 </body>
