@@ -3,203 +3,472 @@
 
 const knowledgeBase = {
     tf: [
-        // Geography, Basic Facts & Symbols
-        { ref: "[Point 1]", q: "China's terrain features a 'Three-step' altitude gradient that is highest in the east and lowest in the west.", a: false, exp: "It is HIGH in the west (Qinghai-Tibet Plateau, the first step) and LOW in the east (plains and coastal areas, the third step)." },
-        { ref: "[Point 1]", q: "Mountainous and plateau areas account for over 60% of China's total land area.", a: true, exp: "China has highly diverse landforms, but mountains and plateaus dominate the landscape, accounting for over 60% of its 9.6 million sq km." },
-        { ref: "[Point 4]", q: "China is officially divided into 23 provinces, 5 Autonomous Regions, and 2 Special Administrative Regions.", a: true, exp: "This is the exact and correct administrative division of China." },
-        { ref: "[Point 5]", q: "The Yellow River is the longest river in China.", a: false, exp: "The Yangtze River is the longest in China. The Yellow River is known as the 'Mother River' of China." },
-        { ref: "[Point 7]", q: "On the Chinese national flag, the large red background symbolizes the revolution.", a: true, exp: "The red symbolizes revolution, and the five yellow stars represent the unity of the Chinese people under the leadership of the CPC." },
-        { ref: "[Point 8]", q: "The People's Republic of China was officially founded on October 1, 1949.", a: true, exp: "October 1 is celebrated annually as China's National Day." },
-        { ref: "[Point 9]", q: "The Wuhou Temple in Chengdu is a shrine dedicated to Confucius.", a: false, exp: "Wuhou Temple in Chengdu is dedicated to Zhuge Liang, the revered military strategist of the Shu Han kingdom during the Three Kingdoms period." },
-        
-        // History, Philosophy & Ancient Civilization
-        { ref: "[Point 10]", q: "Laozi's core philosophy heavily emphasized strict laws and harsh punishments to control people.", a: false, exp: "Laozi founded Taoism, emphasizing 'Tao' (the way of nature), 'wu-wei' (non-action), and harmony. Legalism advocated for strict laws." },
-        { ref: "[Point 11]", q: "During the 'Hundred Schools of Thought', the Mohism school advocated for impartial care for all (universal love) and practical utility.", a: true, exp: "Mohism, founded by Mozi, was famous for its doctrines of universal love and anti-war practical utility." },
-        { ref: "[Point 12]", q: "There are 56 officially recognized ethnic groups in China, with the Han Chinese constituting over 90% of the population.", a: true, exp: "The Han nationality is the largest, while the other 55 are considered ethnic minorities." },
-        { ref: "[Point 13 / Slides]", q: "The Liangzhu Site, dating back 5300-4300 years, represents an early state civilization characterized by highly stratified jade burials.", a: true, exp: "Located in the Yangtze River Delta, the Liangzhu civilization showed clear social classes (jade/silk for elites, pottery for the poor), indicating an early state." },
-        { ref: "[Point 15 / Slides]", q: "The architectural principle of 'Heaven-Human Unity' emphasizes completely subduing nature to highlight human dominance.", a: false, exp: "It emphasizes the exact opposite: architecture must coexist harmoniously with nature, practicing the concept of 'adapting to local conditions' (e.g., mountains and water)." },
-        { ref: "[Point 15 / Slides]", q: "In traditional Chinese architecture, yellow roofs could be used by any wealthy merchant.", a: false, exp: "Due to the principle of 'Ritual Hierarchy' (reflecting Confucian ethics), yellow roofs were strictly reserved for emperors only." },
-        { ref: "[Point 15 / Slides]", q: "The 'Central Axis Symmetry' in Chinese architecture embodies 'central respect' and cosmic balance from Confucian and Taoist thought.", a: true, exp: "Iconic structures like Beijing's Forbidden City center on a north-south axis with mirror-image balance." },
-        
-        // Arts, Culture, Language & Literature
-        { ref: "[Point 18 / Slides]", q: "Xu Shen is historically known as the 'Sage of Character Studies' for compiling the Shuowen Jiezi.", a: true, exp: "Xu Shen (Eastern Han) compiled China's first systematic dictionary, analyzing 9,353 characters and establishing 540 radicals." },
-        { ref: "[Point 18 / Slides]", q: "Cang Jie is traditionally revered as the 'Ancestor of Writing' who created characters by observing celestial phenomena and animal footprints.", a: true, exp: "Cang Jie, a historiographer of the Yellow Emperor, is the legendary creator of Chinese characters." },
-        { ref: "[Point 20 / Slides]", q: "Wang Xizhi is known as the 'Sage of Calligraphy', famous for his masterpiece 'Preface to the Lanting Collection'.", a: true, exp: "Wang Xizhi revolutionized regular, running, and cursive scripts." },
-        { ref: "[Point 20 / Slides]", q: "Liu Gongquan and Yan Zhenqing were famous calligraphers whose styles were considered chaotic and weak.", a: false, exp: "They were highly influential masters. Yan is known for bold, powerful scripts, and Liu for slender, rigid scripts (praised together as 'Yan Jin Liu Gu')." },
-        { ref: "[Point 23]", q: "The four basic skills expected of an ancient Chinese scholar were Music (Qin), Board Games (Qi), Calligraphy (Shu), and Painting (Hua).", a: true, exp: "These four skills were the ultimate marks of a refined, educated literati in ancient China." },
-        { ref: "[Point 25 / Slides]", q: "Traditional Hanfu clothing is characterized by a cross-collared left lapel and the use of modern buttons.", a: false, exp: "Hanfu features a cross-collared RIGHT lapel (Jiaoling Youren), loose wide sleeves, and uses fabric ties instead of buttons." },
-        { ref: "[Point 25]", q: "The Qipao (Cheongsam) evolved from traditional Han Chinese men's clothing in the Ming Dynasty.", a: false, exp: "The Qipao evolved from Manchu women's clothing in the late Qing Dynasty, highlighting a fitted silhouette." },
-        { ref: "[Point 27]", q: "Face-changing (Bian Lian) and fire-breathing are famous stunts that specifically belong to Beijing Opera.", a: false, exp: "These dramatic and famous stunts belong to Sichuan Opera, not Beijing Opera." },
-        { ref: "[Point 28 / Slides]", q: "Li Bai is known as the 'Poet Immortal' (Shi Xian), famous for his heroic, romantic, and free-spirited poetry.", a: true, exp: "Li Bai's poems often celebrated friendship, nature, solitude, and drinking, with a Taoist overtone." },
-        { ref: "[Point 28 / Slides]", q: "Du Fu is called the 'Poet-Historian' and 'Poet Sage' because his poems meticulously recorded historic events and social realities.", a: true, exp: "Du Fu's style was serious, patriotic, and known for clever and accurate word choices reflecting the realities of the Tang Dynasty." },
-        { ref: "[Point 29 / Slides]", q: "The famous scroll painting 'Riverside Scene at Qingming Festival' was painted by Zhang Zeduan.", a: true, exp: "Zhang Zeduan was a Song Dynasty painter who created this incredibly detailed masterpiece of urban life." },
-        { ref: "[Point 31]", q: "Emperor Qin Shi Huang is famous for standardizing writing, currency, and measurements, and for his Terracotta Army.", a: true, exp: "He unified China in 221 BCE, built the early Great Wall, and left behind the massive mausoleum protected by clay soldiers." },
-        { ref: "[Point 32]", q: "Wu Zetian was the first and only female emperor in Chinese history.", a: true, exp: "She ruled during the Tang Dynasty period (ruled 690-705 CE)." },
-        { ref: "[Point 34 / Slides]", q: "Xi'an (formerly Chang'an) served as the capital for 13 major dynasties and is considered China's most celebrated ancient capital.", a: true, exp: "It was the capital for major dynasties including the Qin, Han, and Tang." },
-        { ref: "[Point 36]", q: "The term 'Kungfu' is more generic than the term 'Wushu'.", a: false, exp: "The term 'Wushu' (literally 'martial art') is the most generic, all-encompassing term for all Chinese martial arts, traditional and modern." },
-        
-        // Science, Medicine, Math & Astronomy
-        { ref: "[Point 39]", q: "There are 24 solar terms (Jieqi) in one traditional Chinese lunar year, used to mark annual climate changes.", a: true, exp: "These 24 points mark the Sun's position and were historically vital for guiding agricultural activities." },
-        { ref: "[Point 41]", q: "The 'Four Great Inventions' of ancient China are the Compass, Gunpowder, Papermaking, and Printing.", a: true, exp: "These four inventions heavily influenced the development of global civilization." },
-        { ref: "[Point 42]", q: "In Traditional Chinese Medicine (TCM), the four diagnosis methods are Inspection, Auscultation & Olfaction, Inquiry, and Palpation.", a: true, exp: "These are the core diagnostic techniques practiced in TCM for thousands of years." },
-        { ref: "[Point 43 / Slides]", q: "Zhang Zhongjing is revered as the 'Medicine Sage' (Yi Sheng) for writing the 'Treatise on Cold Pathogenic and Miscellaneous Diseases'.", a: true, exp: "An Eastern Han physician, he established fundamental medication principles that profoundly impacted TCM." },
-        { ref: "[Point 44 / Slides]", q: "The mathematician Zhang Cang recorded the world's earliest systematic solutions for simultaneous linear equations.", a: true, exp: "He compiled and finalized 'The Nine Chapters on the Mathematical Art' during the Western Han Dynasty." },
-        { ref: "[Point 44 / Slides]", q: "Mathematician Liu Hui invented the cyclotomic method to calculate pi iteratively, showing early limit thinking.", a: true, exp: "Liu Hui annotated 'The Nine Chapters' and developed advanced surveying algorithms in the Three Kingdoms period." },
-        { ref: "[Point 44 / Slides]", q: "Zu Chongzhi calculated pi (π) to 7 decimal places, an achievement that led the world for over 1,000 years.", a: true, exp: "Zu Chongzhi achieved this incredible mathematical feat during the Southern and Northern Dynasties." },
-        { ref: "[Point 44 / Slides]", q: "Qin Jiushao created the 'Chinese Remainder Theorem' and numerical solutions for higher-order equations.", a: true, exp: "He was a brilliant mathematician of the Southern Song Dynasty." },
-        { ref: "[Point 45 / Slides]", q: "Guo Shoujing's 'Shoushi Calendar' was highly inaccurate and quickly replaced by Western calendars.", a: false, exp: "The Shoushi Calendar (Yuan Dynasty) was the most accurate in the world at the time, matching the modern Gregorian calendar's accuracy 300 years before Europe." },
-        
-        // Foreign Exchange & Imperial System
-        { ref: "[Point 46 / Slides]", q: "Marco Polo was a Venetian merchant who served under the Qing Dynasty for 17 years.", a: false, exp: "He served under Kublai Khan's YUAN Dynasty, not the Qing Dynasty." },
-        { ref: "[Point 46 / Slides]", q: "Matteo Ricci was an Italian Jesuit missionary who brought Western astronomy and math to late Ming Dynasty China.", a: true, exp: "He was a key figure in early Sino-Western exchange, bridging European and Chinese civilizations." },
-        { ref: "[Point 47 / Slides]", q: "The prohibition of Catholicism in 1616 (Nanjing Incident) was entirely because the missionaries refused to pay taxes.", a: false, exp: "It was banned due to cultural conflicts (clashing with Confucian ancestor worship), political fears of espionage/rebellion, and intellectual resistance to Western science." },
-        { ref: "[Point 48 / Slides]", q: "Wei Yuan authored the 'Illustrated Survey of Foreign Nations' in response to China's defeat in the First Opium War.", a: true, exp: "It was one of China's first major works attempting to understand the geography and strategy of the West." },
-        { ref: "[Point 50 / Slides]", q: "The Imperial Examination system (Keju) was established to ensure that only the wealthy aristocracy could hold government jobs.", a: false, exp: "It was created specifically to REPLACE the aristocracy recommendation system, allowing ordinary people to gain official positions based on written exams (merit)." },
-        { ref: "[Point 50 / Slides]", q: "A major demerit of the Imperial Exam in the Ming and Qing dynasties was the rigid 'eight-legged essay' which discouraged creativity.", a: true, exp: "This rigid format restrained thinking, ignored practical sciences like engineering, and caused social conservatism." },
-        { ref: "[Point 51 / Slides]", q: "The primary historical function of the Great Wall was purely decorative and for tourism.", a: false, exp: "Its main functions were military defense against nomadic invasions, border governance (restricting smuggling), economic protection for the Silk Road, and cultural division." },
-        
-        // Modern History & Society
-        { ref: "[Point 52 / Slides]", q: "According to processing techniques, Green tea is completely unfermented, while Black tea is fully fermented.", a: true, exp: "Oolong tea is semi-fermented, and Dark tea (like Pu'er) is post-fermented." },
-        { ref: "[Point 53 / Slides]", q: "The First Opium War was triggered because China was illegally smuggling opium into Britain.", a: false, exp: "It was triggered because BRITAIN illegally smuggled opium into China to reverse a trade deficit. Chinese official Lin Zexu banned and destroyed it." },
-        { ref: "[Point 53 / Slides]", q: "The Treaty of Nanjing (1842) was an unequal treaty where China was forced to cede Hong Kong Island to Britain.", a: true, exp: "It also forced China to open five treaty ports and lose tariff autonomy, beginning its semi-colonial era." },
-        { ref: "[Point 53 / Slides]", q: "During the Second Opium War, Anglo-French allied forces invaded Beijing and burned down the Old Summer Palace in 1860.", a: true, exp: "This traumatic event resulted in further unequal treaties (Tientsin and Peking) and expanded foreign intrusion." },
-        { ref: "[Point 54]", q: "Minority ethnic group students in China receive favorable policies, such as lower Gaokao score requirements and bilingual education.", a: true, exp: "The government implements these policies to promote educational equity and cultural preservation for minorities." },
-        { ref: "[Point 55]", q: "The 'Double First-Class' Initiative aims to build world-class universities and disciplines, replacing the older '985' and '211' projects.", a: true, exp: "Launched in 2017, this is China's current premier higher education development strategy." },
-        
-        // Politics, Economy & Global Governance
-        { ref: "[Point 56 / Slides]", q: "China's political party system is a Western-style multi-party system where parties constantly compete in national elections to replace the ruling party.", a: false, exp: "It is a system of multi-party COOPERATION and political consultation under the leadership of the CPC. The 8 democratic parties are participating parties, not opposition." },
-        { ref: "[Point 57 / Slides]", q: "A core advantage of the Chinese political system is its ability to formulate stable, long-term national strategies without frequent partisan reversals.", a: true, exp: "Unlike Western models, China can maintain consistent policies (like Five-Year Plans) and efficiently mobilize resources for major tasks." },
-        { ref: "[Point 58 / Slides]", q: "China's environmental protection measures include the 'Grain for Green' project, which converts farmland back to forests to prevent soil erosion.", a: true, exp: "Other measures include promoting renewable energy, strict pollution laws, and building nature reserves." },
-        { ref: "[Point 60 / Slides]", q: "The core reason for China's rapid economic leap and poverty alleviation since 1978 is the 'Reform and Opening-up' policy.", a: true, exp: "Initiated by Deng Xiaoping, this policy broke the planned economy, introduced market mechanisms, and embraced global trade." },
-        { ref: "[Point 61 / Slides]", q: "According to the study guide, 'Chinese Modernization' strictly demands that all developing countries completely copy China's specific economic model.", a: false, exp: "China asserts its model is 'not fully copyable' because every nation has different conditions. It offers a reference, but advocates that each country find its own path." },
-        { ref: "[Point 61 / Slides]", q: "Chinese Modernization features common prosperity for all, harmony between humanity and nature, and peaceful development.", a: true, exp: "It explicitly differs from Western modernization models that historically involved colonization, war, or extreme wealth inequality." },
-        { ref: "[Point 65 / Slides]", q: "The concept of a 'Community with a Shared Future for Mankind' advocates that countries should isolate themselves and ignore global challenges.", a: false, exp: "It advocates the exact opposite: that all nations are interdependent and must cooperate to address global threats like climate change, terrorism, and poverty." },
-        { ref: "[Point 65 / Slides]", q: "The concept of 'Building a Community with a Shared Future for Mankind' has been repeatedly included in United Nations General Assembly resolutions.", a: true, exp: "First proposed by President Xi in 2013, it has become a widely recognized international public good." },
-        { ref: "[Point 66 / Slides]", q: "The System of Regional Ethnic Autonomy means that minority regions become fully independent countries separate from China.", a: false, exp: "They remain under the unified leadership of the Chinese state, but are granted self-governance rights to independently manage local cultural, educational, and economic affairs." },
-        { ref: "[Point 68 / Slides]", q: "As part of its commitment to world peace, China is a major contributor to UN peacekeeping operations and settles disputes through dialogue rather than military force.", a: true, exp: "China firmly follows an independent peaceful foreign policy and opposes hegemonism." },
-        { ref: "[Point 69 / Slides]", q: "China's family planning policy has never changed since it was first introduced in the 1970s.", a: false, exp: "It evolved from the strict 'one-child' policy to the 'two-child' (2016) and 'three-child' (2021) policies to adapt to demographic changes like an aging population." },
-        { ref: "[Point 69 / Slides]", q: "The evolution of China's family planning policy reflects the principle of 'seeking truth from facts' and keeping pace with changing demographic trends.", a: true, exp: "It balances national long-term sustainable development with the real needs of the people." }
+       // --- GEOGRAPHY, DEMOGRAPHICS & BASIC FACTS ---
+    { ref: "[Point 1]", q: "China's terrain is characterized by a 'staircase' topography where the highest step is located in the east and the lowest step is in the west.", a: false, exp: "It is the exact opposite. The terrain descends from west to east. The highest step is in the west (Qinghai-Tibet Plateau) and the lowest step is in the east (broad plains and low hills)." },
+    { ref: "[Point 1]", q: "The lowest step of China's terrain, located in the east, is where most of the population and agriculture are concentrated.", a: true, exp: "This eastern region consists of broad plains and low hills, making it highly suitable for agriculture and human settlement." },
+    { ref: "[Point 2]", q: "China is the largest country in the world by total land area.", a: false, exp: "China has a land area of approximately 9.6 million square kilometers, making it the third or fourth largest country in the world, not the first." },
+    { ref: "[Point 4]", q: "China's administrative division includes 4 direct-controlled municipalities: Beijing, Shanghai, Tianjin, and Chongqing.", a: true, exp: "These four cities are under direct administration of the central government, existing alongside 23 provinces, 5 autonomous regions, and 2 SARs." },
+    { ref: "[Point 5]", q: "Mount Everest (Qomolangma) is located entirely within China's borders.", a: false, exp: "Mount Everest is located on the border between China (Tibet Autonomous Region) and Nepal." },
+    { ref: "[Point 8]", q: "The People's Republic of China was officially founded on October 1, 1949.", a: true, exp: "October 1 is celebrated annually as China's National Day to mark the founding of the PRC." },
+    { ref: "[Point 9]", q: "Sichuan province is located in Southeastern China and its primary dialect is Cantonese.", a: false, exp: "Sichuan is located in Southwestern China, its capital is Chengdu, and the local dialect is Sichuanese (a variant of Southwestern Mandarin)." },
+
+    // --- PHILOSOPHY, RELIGION & ANCIENT HISTORY ---
+    { ref: "[Point 10]", q: "Confucianism emphasizes 'Ren' (benevolence), 'Li' (proper rites), filial piety, and social harmony through strict moral hierarchies.", a: true, exp: "These are the core tenets of Confucianism, founded by Confucius, which heavily influenced Chinese social structures." },
+    { ref: "[Point 10]", q: "Laozi, the founder of Daoism, advocated for taking aggressive action and establishing strict laws to govern society.", a: false, exp: "Laozi emphasized the 'Dao' (the natural order) and 'Wuwei' (action through non-action, naturalness, and simplicity), not strict laws." },
+    { ref: "[Point 11]", q: "During the 'Hundred Schools of Thought' period, the Legalism school advocated for universal love and utilitarianism.", a: false, exp: "Legalism advocated for strict law and state control. It was the Mohism school that advocated for universal love and utilitarianism." },
+    { ref: "[Point 12]", q: "There are 56 officially recognized ethnic groups in China, with the Han Chinese making up over 90% of the population.", a: true, exp: "The Han are the vast majority, while the other 55 groups are officially recognized ethnic minorities." },
+    { ref: "[Point 13]", q: "The Liangzhu Site is an ancient civilization located in the Yellow River basin.", a: false, exp: "The Liangzhu Site (5300-4300 years ago) is located in the Yangtze River Delta, not the Yellow River basin." },
+    { ref: "[Point 14]", q: "The Xia Dynasty is recognized as the first major dynasty in Chinese history.", a: true, exp: "The Xia Dynasty is the first, followed by Shang, Zhou, Qin, Han, Tang, Song, Yuan, Ming, and Qing." },
+    { ref: "[Point 16]", q: "Zheng He was a famous fleet admiral during the Qing Dynasty who commanded seven voyages to the Americas.", a: false, exp: "Zheng He served during the early Ming Dynasty (1371-1433), and his seven monumental voyages went to Southeast Asia, South Asia, the Middle East, and East Africa (the 'Western Seas')." },
+    { ref: "[Point 17]", q: "Oracle Bone Script (Jiaguwen) was primarily used for divination purposes during the Shang Dynasty.", a: true, exp: "Carved on turtle shells and animal bones, it is the earliest known form of Chinese character." },
+
+    // --- ARTS, LITERATURE, ARCHITECTURE & CULTURE ---
+    { ref: "[Point 15]", q: "In traditional Chinese architecture, the principle of 'Heaven-Human Unity' dictates that buildings must aggressively stand out against nature.", a: false, exp: "The principle of 'Heaven-Human Unity' dictates that buildings must coexist harmoniously with nature, not oppose it." },
+    { ref: "[Point 15]", q: "The architectural principle of 'Ritual Hierarchy' refers to encoding social rank through strict design rules such as roof style, color, and column numbers.", a: true, exp: "This is why certain colors (like yellow) and roof styles were exclusively reserved for imperial use." },
+    { ref: "[Point 18]", q: "Xu Shen compiled 'Shuowen Jiezi', China's first systematic dictionary, and is known as the Chinese character sage.", a: true, exp: "He analyzed 9,353 characters and established 540 radicals. Cang Jie is known as the legendary 'creator' of characters." },
+    { ref: "[Point 20]", q: "Ouyang Xun and Zhao Mengfu are recognized among the top five representative calligraphers of ancient China.", a: true, exp: "They are listed alongside Wang Xizhi (Sage of Calligraphy), Yan Zhenqing, and Liu Gongquan." },
+    { ref: "[Point 21]", q: "The main principle of traditional Chinese Shanshui (mountain and water) painting is to achieve exact, hyper-realistic visual representation of landscapes.", a: false, exp: "Shanshui painting explicitly avoids exact realistic representation. Its goal is to capture the inner spirit, energy, and harmony of nature, heavily utilizing blank space." },
+    { ref: "[Point 22]", q: "A traditional Chinese painting masterpiece integrates four elements: Poetry, Calligraphy, Painting, and the Seal.", a: true, exp: "These four elements are considered the essential components of classical Chinese artwork." },
+    { ref: "[Point 23]", q: "The 'Four Arts' expected of an ancient Chinese scholar were riding, archery, mathematics, and singing.", a: false, exp: "The 'Four Arts' (Siyi) were Qin (stringed instrument), Qi (Go board game), Shu (calligraphy), and Hua (painting)." },
+    { ref: "[Point 24]", q: "The Mogao Caves, a UNESCO World Heritage site known for its grottoes and frescos, are located in Dunhuang.", a: true, exp: "They are also known as the Caves of the Thousand Buddhas." },
+    { ref: "[Point 25]", q: "Traditional Hanfu clothing features a cross-collared right lapel, loose wide sleeves, and uses fabric ties instead of buttons.", a: true, exp: "Hanfu was the traditional clothing of the Han Chinese people from ancient times up to the late Ming Dynasty." },
+    { ref: "[Point 26]", q: "In Beijing Opera, the 'Chou' role represents a painted-face male warrior.", a: false, exp: "The 'Chou' is the male clown role. The painted-face male role is called 'Jing'." },
+    { ref: "[Point 27]", q: "Face-changing (Bian Lian) and fire-breathing are famous stunts traditionally belonging to Sichuan Opera.", a: true, exp: "These dramatic skills are used uniquely in Sichuan Opera to express sudden changes in emotion." },
+    { ref: "[Point 28]", q: "In Tang Dynasty poetry, Du Fu is known as the 'Poet Immortal' due to his heroic imagination, while Li Bai is the 'Poet Sage'.", a: false, exp: "The titles are reversed. Du Fu is the 'Poet Sage' (serious, patriotic), and Li Bai is the 'Poet Immortal' (heroic, romantic, bold)." },
+    { ref: "[Point 30]", q: "The Erhu is a four-stringed lute, while the Pipa is a two-stringed bowed fiddle.", a: false, exp: "It is the other way around. The Erhu is a two-stringed bowed fiddle, and the Pipa is a four-stringed lute." },
+
+    // --- EMPERORS, CAPITALS & MONUMENTS ---
+    { ref: "[Point 31]", q: "Qin Shi Huang, the First Emperor of a unified China, standardized writing, weights, measures, and currency.", a: true, exp: "In addition to these unifications, he began the Great Wall and commissioned the Terracotta Army." },
+    { ref: "[Point 32]", q: "Wu Zetian, who ruled during the Tang/Wu Zhou Dynasty, is the only officially recognized female sovereign in Chinese history.", a: true, exp: "She is the only woman in Chinese history to officially take the title of Emperor." },
+    { ref: "[Point 34]", q: "Anyang served as the capital during the Shang Dynasty.", a: true, exp: "Anyang is recognized as one of the major ancient capitals and the site of Shang Dynasty ruins (Yinxu)." },
+    { ref: "[Point 51]", q: "The Great Wall of China was primarily built to serve as a scenic tourist attraction and an aqueduct for water transport.", a: false, exp: "Its historical functions were military defense against nomadic invasions, border governance, economic protection (Silk Road), and cultural division." },
+
+    // --- CALENDARS, FESTIVALS & TRADITIONAL MEDICINE ---
+    { ref: "[Point 37]", q: "The Heavenly Stems and Earthly Branches (H&T chronology) is a sexagenary (60-year) cycle system used in the lunar calendar.", a: true, exp: "It is a traditional system used for calculating years, months, days, and hours." },
+    { ref: "[Point 38]", q: "There are 12 'Jieqi' (solar terms) in one traditional Chinese lunar year.", a: false, exp: "There are 24 'Jieqi' (solar terms) in one year, used to mark astronomical events and guide agriculture." },
+    { ref: "[Point 39]", q: "Eating Zongzi (sticky rice dumplings) and racing dragon boats are traditional customs of the Qingming Festival.", a: false, exp: "These are customs of the Dragon Boat Festival. The Qingming Festival involves tomb-sweeping and honoring the dead." },
+    { ref: "[Point 42]", q: "In Traditional Chinese Medicine (TCM), the four diagnosis methods are Observation, Auscultation/Olfaction, Interrogation, and Palpation.", a: true, exp: "These four methods (looking, listening/smelling, asking, touching/pulse-taking) are the foundation of TCM diagnostics." },
+    { ref: "[Point 43]", q: "Zhang Zhongjing is revered as the Medicine Sage for writing the 'Treatise on Cold Pathogenic and Miscellaneous Diseases' during the Eastern Han dynasty.", a: true, exp: "He established foundational medication principles for TCM that are still used today." },
+
+    // --- SCIENCE, MATH & INVENTIONS ---
+    { ref: "[Point 40]", q: "The 'Four Great Inventions' of ancient China are Papermaking, Printing, Gunpowder, and the Compass.", a: true, exp: "These four inventions had a profound impact on global civilization and technological development." },
+    { ref: "[Point 41]", q: "China's current progress in 5G, high-speed rail, and space exploration is driven by massive government R&D investment and STEM education.", a: true, exp: "Other factors include policies opening up to global markets and a vast domestic consumer market driving innovation." },
+    { ref: "[Point 44]", q: "In ancient China, the mathematician Zu Chongzhi invented the cyclotomic method, while Liu Hui calculated the most accurate value of pi.", a: false, exp: "The achievements are swapped. Liu Hui invented the cyclotomic method, while Zu Chongzhi calculated the most accurate value of pi in the ancient world." },
+    { ref: "[Point 44]", q: "The mathematician Qin Jiushao is famous for developing the Chinese Remainder Theorem.", a: true, exp: "Qin Jiushao was a brilliant mathematician who made major contributions to numerical solutions." },
+    { ref: "[Point 45]", q: "The Shoushi Calendar compiled by Guo Shoujing in the Yuan Dynasty was nearly identical to the modern Gregorian calendar but was created 300 years earlier.", a: true, exp: "This represents a massive astronomical achievement, making it the most accurate calendar in the world at its time." },
+
+    // --- FOREIGN EXCHANGE, HISTORY & OPIUM WARS ---
+    { ref: "[Point 46]", q: "Matteo Ricci was a 13th-century Venetian traveler who served in Kublai Khan's court.", a: false, exp: "Marco Polo was the Venetian traveler in Kublai Khan's court (Yuan Dynasty). Matteo Ricci was an Italian Jesuit missionary in the late Ming Dynasty." },
+    { ref: "[Point 47]", q: "Catholicism was prohibited in late-Ming dynasty China (the 1616 Nanjing Incident) solely because foreign missionaries refused to learn the Chinese language.", a: false, exp: "It was prohibited due to a combination of cultural conflicts (clashing with Confucian ancestor worship), political fears of rebellion/foreign collusion, intellectual opposition, and social backlash over land." },
+    { ref: "[Point 48]", q: "Wei Yuan authored the 'Illustrated Survey of Foreign Nations' (Hai Guo Tu Zhi) as an initial response to the First Opium War.", a: true, exp: "It was the first significant Chinese work analyzing the West, aiming to understand foreign geography and strategy." },
+    { ref: "[Point 50]", q: "The Imperial Examination (Keju) had the merit of allowing fair social mobility but the demerit of stifling creativity due to rigid eight-legged essays.", a: true, exp: "Started in the Sui Dynasty (605 AD), it replaced noble birth with written exams but eventually caused social conservatism before being abolished in 1905." },
+    { ref: "[Point 52]", q: "Chinese Dark tea, such as Pu'er, is categorized as a completely unfermented tea.", a: false, exp: "Green tea is unfermented. Dark tea (Pu'er) is categorized as a fully/post-fermented tea." },
+    { ref: "[Point 53]", q: "The First Opium War (1840-1842) was triggered because China was illegally smuggling opium into Britain.", a: false, exp: "It was triggered because Britain smuggled opium into China. The resulting Treaty of Nanjing forced China to open ports and cede Hong Kong, turning it into a semi-colonial society." },
+    { ref: "[Point 53]", q: "During the Second Opium War (1856-1860), Anglo-French forces invaded Beijing and burned down the Old Summer Palace.", a: true, exp: "This traumatic historical event resulted in treaties that further damaged China's sovereignty." },
+
+    // --- EDUCATION & SOCIETY ---
+    { ref: "[Point 54]", q: "Favorable policies for minority ethnic group students in China include bonus points on the Gaokao, specialized university quotas, and funding for bilingual education.", a: true, exp: "These policies are designed to promote educational equity and protect minority languages and cultures." },
+    { ref: "[Point 55]", q: "The 'Project 985', initiated in 2015, is China's newest educational initiative to develop world-class universities by the year 2050.", a: false, exp: "Project 985 was initiated in May 1998 to create elite universities. The initiative started in 2015 aiming for 2050 is the 'Double First-Class' project." },
+    { ref: "[Point 69]", q: "China's family planning policy has strictly remained a 'one-child' policy since 1982 with no adaptations.", a: false, exp: "The policy evolved from controlling population in 1982 to a 'three-child' policy in 2021, reflecting pragmatic governance and respect for changing demographic laws (like an aging population)." },
+
+    // --- POLITICS, ECONOMY & GLOBAL INITIATIVES ---
+    { ref: "[Point 56]", q: "China's political party system is characterized by the CPC acting as the ruling party while eight democratic parties act as opposing parties to challenge them.", a: false, exp: "The eight democratic parties are 'participating parties', not opposing parties. The system focuses on multi-party cooperation and political consultation, not confrontation." },
+    { ref: "[Point 57]", q: "According to the study guide, an advantage of China's whole-process people's democracy is stable, long-term policy planning without short-term election-driven disruptions.", a: true, exp: "It also highlights efficient governance, reduced partisan strife, and people-centered governance not influenced by capital/interest groups." },
+    { ref: "[Point 58]", q: "China's environmental protection measures include strictly increasing smog output and completely deforesting rural areas to build factories.", a: false, exp: "The measures include the exact opposite: cutting smog, planting forests (ecological restoration), green/low-carbon development, and international climate cooperation." },
+    { ref: "[Point 59]", q: "The 'Five Principles of Peaceful Coexistence' includes mutual respect for sovereignty, mutual non-aggression, and non-interference in internal affairs.", a: true, exp: "Established in the 1950s, these principles form the cornerstone of China's foreign policy." },
+    { ref: "[Point 60]", q: "The 'Reform and Opening-up' policy is listed as the primary reason for China eliminating extreme poverty and becoming the world's second-largest economy after 1978.", a: true, exp: "Other reasons include market-oriented reforms, social stability, and the introduction of foreign capital." },
+    { ref: "[Point 61]", q: "Chinese Modernization is a universal model that China explicitly demands all other developing nations to copy completely.", a: false, exp: "The document notes that Chinese modernization is suited to China's specific national conditions and is 'not fully copyable' by others, though it provides valuable lessons." },
+    { ref: "[Point 62]", q: "The 'Reform and Opening-up' policy involved domestic market mechanism reforms starting in rural areas, and opening coastal cities to foreign capital.", a: true, exp: "Launched in 1978, its goal was to improve living standards and realize national modernization." },
+    { ref: "[Point 64]", q: "The 'One Belt and One Road' Initiative (BRI) is a military alliance designed to counter Western naval powers in the Pacific.", a: false, exp: "The BRI is a massive global infrastructure and economic development strategy aimed at connecting Asia with Africa and Europe via land and maritime networks, not a military alliance." },
+    { ref: "[Point 65]", q: "The concept of a 'Community with a Shared Future for Mankind' aims to balance legitimate concerns of other countries while pursuing common development and world peace.", a: true, exp: "Proposed by President Xi in 2013, it emphasizes global interdependence and win-win cooperation." },
+    { ref: "[Point 66]", q: "The 'System of Regional Ethnic Autonomy' means that minority areas become independent countries completely separated from the Chinese state.", a: false, exp: "Autonomous organs exercise self-governance rights *under the unified leadership of the state*, protecting minority rights while maintaining national unity." },
+    { ref: "[Point 67]", q: "Socialism with Chinese characteristics combines scientific socialism with China’s specific national conditions, featuring CPC leadership and a socialist market economy.", a: true, exp: "It is a unique development model tailored to China's history and reality." },
+    { ref: "[Point 68]", q: "China contributes to world peace by actively participating in UN peacekeeping, pursuing peaceful development without expansion, and settling disputes through dialogue.", a: true, exp: "China adheres to an independent, peaceful foreign policy and opposes hegemonism." }
     ],
     mc: [
-        // Geography, Basic Facts & Symbols
-        { ref: "[Point 2]", q: "What is the approximate land area of China?", options: ["7.6 million sq km", "9.6 million sq km (about 3.7 million sq miles)", "12.4 million sq km", "14.1 million sq km"], answer: 1, exp: "China's total land area is approximately 9.6 million square kilometers." },
-        { ref: "[Point 4]", q: "How is China administratively divided at the top level?", options: ["50 states and 1 federal district", "23 provinces, 5 autonomous regions, and 2 special administrative regions", "30 provinces and 5 special economic zones", "15 regions and 3 territories"], answer: 1, exp: "China officially has 23 provinces, 5 Autonomous Regions (like Tibet and Xinjiang), and 2 SARs (Hong Kong and Macao)." },
-        { ref: "[Point 5]", q: "Which river is the longest in China, and which is known as the 'Mother River'?", options: ["Yellow River (longest); Pearl River (Mother)", "Yangtze River (longest); Yellow River (Mother)", "Heilongjiang (longest); Yangtze (Mother)", "Pearl River (longest); Yellow River (Mother)"], answer: 1, exp: "The Yangtze is the longest river in China, while the Yellow River is historically revered as the cradle of Chinese civilization, hence the 'Mother River'." },
-        { ref: "[Point 9]", q: "Which of the following statements about Sichuan province is TRUE?", options: ["Its capital is Chongqing.", "It is located in Northeast China.", "It features the Wuhou Temple dedicated to military strategist Zhuge Liang.", "Its primary dialect is Cantonese."], answer: 2, exp: "Sichuan's capital is Chengdu, it is in Southwest China, speaks Sichuanese (Southwestern Mandarin), and is home to the Wuhou Temple and Mount Emei." },
-        { ref: "[Point 12]", q: "How many officially recognized ethnic groups are there in China, and which one constitutes over 90% of the population?", options: ["55 groups; Tibetan is the largest", "56 groups; Han is the largest", "34 groups; Zhuang is the largest", "56 groups; Manchu is the largest"], answer: 1, exp: "There are 56 ethnic groups. The Han nationality makes up over 90% of the population, making the other 55 'ethnic minorities'." },
-        
-        // History, Philosophy & Ancient Civilization
-        { ref: "[Point 13 / Slides]", q: "Which Neolithic culture located in the Yangtze River Delta (5300–2300 BC) represents an early Chinese state known for its highly stratified jade burials?", options: ["Erlitou Culture", "Liangzhu Civilization", "Longshan Culture", "Hongshan Culture"], answer: 1, exp: "The Liangzhu site is a UNESCO World Heritage site proving early statehood through distinct social classes seen in jade vs. pottery burials." },
-        { ref: "[Point 10]", q: "Which ancient philosopher founded Confucianism and advocated for ruling by virtue, 'benevolence' (ren), and 'propriety' (li)?", options: ["Laozi", "Zhuangzi", "Confucius", "Han Feizi"], answer: 2, exp: "Confucius (551-479 BCE) focused on ethics, family duty, and moral rulers. Laozi founded Taoism." },
-        { ref: "[Point 11]", q: "During the 'Hundred Schools of Thought' period, which school advocated for strict laws and harsh punishments to control the population?", options: ["Confucianism", "Daoism", "Legalism", "Mohism"], answer: 2, exp: "Legalism believed in strict laws and harsh punishments, unlike Confucianism (virtue) or Mohism (universal love)." },
-        { ref: "[Point 15 / Slides]", q: "According to traditional Chinese architectural principles, what does 'Central Axis Symmetry' represent?", options: ["Adapting to local mountains and water", "Social rank differentiated by roof style", "Cosmic balance and 'central respect' (Shangzhong) from Confucian/Taoist thought", "The absolute dominance of humans over nature"], answer: 2, exp: "Central Axis Symmetry involves a north-south axis with mirror-image balance, embodying 'central respect'. Adapting to nature is 'Heaven-Human Unity'." },
-        { ref: "[Point 32]", q: "Who was the first and only female emperor in Chinese history?", options: ["Empress Dowager Cixi", "Wu Zetian", "Wang Zhaojun", "Yang Guifei"], answer: 1, exp: "Wu Zetian ruled during the Tang Dynasty period (690-705 CE) and is the only recognized female sovereign in Chinese history." },
-        { ref: "[Point 34 / Slides]", q: "Which city is celebrated as China's most prominent ancient capital, serving as the capital for 13 major dynasties including the Qin, Han, and Tang?", options: ["Luoyang", "Nanjing", "Beijing", "Xi'an (Chang'an)"], answer: 3, exp: "Xi'an, formerly known as Chang'an, is the most celebrated of the Eight Great Ancient Capitals." },
-        
-        // Arts, Culture, Language & Literature
-        { ref: "[Point 18 / Slides]", q: "Who compiled the 'Shuowen Jiezi', China's first systematic dictionary that established 540 radicals, earning him the title 'Sage of Character Studies'?", options: ["Cang Jie", "Xu Shen", "Wang Xizhi", "Sima Qian"], answer: 1, exp: "Xu Shen (Eastern Han) analyzed 9,353 characters in the Shuowen Jiezi. Cang Jie is the legendary creator of characters." },
-        { ref: "[Point 20 / Slides]", q: "Which ancient calligrapher is universally known as the 'Sage of Calligraphy' (author of the 'Preface to the Lanting Collection')?", options: ["Wang Xizhi", "Yan Zhenqing", "Liu Gongquan", "Zhao Mengfu"], answer: 0, exp: "Wang Xizhi revolutionized regular, running, and cursive scripts." },
-        { ref: "[Point 20 / Slides]", q: "In the context of Chinese calligraphy, what is the stylistic hallmark of Liu Gongquan?", options: ["Wild, chaotic cursive script", "Slender, rigid regular script", "Restoring classic styles in the Yuan Dynasty", "Creating the very first oracle bone scripts"], answer: 1, exp: "Liu Gongquan is famous for his slender, rigid style. He is often praised alongside Yan Zhenqing ('Yan Jin Liu Gu')." },
-        { ref: "[Point 23]", q: "What were the 'Four basic skills' expected of an ancient Chinese scholar?", options: ["Archery, Charioteering, Math, Calligraphy", "Qin (Music), Qi (Board Games), Shu (Calligraphy), Hua (Painting)", "Poetry, Prose, Singing, Dancing", "Farming, Reading, Writing, Fighting"], answer: 1, exp: "Qin, Qi, Shu, and Hua were the ultimate marks of a refined literati." },
-        { ref: "[Point 25 / Slides]", q: "Which of the following accurately describes traditional 'Hanfu' clothing?", options: ["Fitted silhouette, evolved from Manchu clothing", "Modern suit designed by Sun Yat-sen", "Cross-collared right lapel, loose wide sleeves, and fabric ties", "Left-side lapel with extensive metal zippers"], answer: 2, exp: "Hanfu is the traditional clothing of the Han Chinese, featuring the 'Jiaoling Youren' (cross-collared right lapel) and no buttons." },
-        { ref: "[Point 26]", q: "In Beijing Opera, what does the role 'Jing' (净) represent?", options: ["Male roles", "Female roles", "Comic, clownish male roles", "Painted-face male roles"], answer: 3, exp: "Sheng (male), Dang (female), Jing (painted-face male), and Chou (comic male)." },
-        { ref: "[Point 27]", q: "Face-changing (Bian Lian) and fire-breathing are spectacular stunts uniquely belonging to which traditional art form?", options: ["Beijing Opera", "Sichuan Opera", "Kunqu Opera", "Shaolin Martial Arts"], answer: 1, exp: "These stunts are used in Sichuan Opera to express sudden emotional or character transformations." },
-        { ref: "[Point 28 / Slides]", q: "Which great Tang Dynasty poet is known as the 'Poet Immortal' (Shi Xian), famous for his heroic, romantic, and free-spirited imagination?", options: ["Du Fu", "Bai Juyi", "Li Bai", "Wang Wei"], answer: 2, exp: "Li Bai is the Poet Immortal. Du Fu is the Poet Sage (Shi Sheng), known for serious, realistic, and patriotic poems." },
-        { ref: "[Point 29 / Slides]", q: "The famous scroll painting 'Riverside Scene at Qingming Festival', which vividly depicts urban life, was created by:", options: ["Wu Daozi", "Zhang Zeduan", "Gu Kaizhi", "Qi Baishi"], answer: 1, exp: "Zhang Zeduan created this masterpiece during the Song Dynasty." },
-        
-        // Math, Science, Medicine & Astronomy
-        { ref: "[Point 41]", q: "Which of the following represents China's ancient 'Four Great Inventions'?", options: ["Silk, Porcelain, Tea, Iron casting", "Abacus, Seismograph, Acupuncture, Calligraphy", "Compass, Gunpowder, Papermaking, Printing", "Paper money, Movable type, Crossbow, Bronze chariots"], answer: 2, exp: "The Compass, Gunpowder, Papermaking, and Printing are globally recognized as the Four Great Inventions." },
-        { ref: "[Point 43 / Slides]", q: "Who is revered as the 'Medicine Sage' (Yi Sheng) for his Eastern Han dynasty work, the 'Treatise on Cold Pathogenic and Miscellaneous Diseases'?", options: ["Hua Tuo", "Sun Simiao", "Zhang Zhongjing", "Li Shizhen"], answer: 2, exp: "Zhang Zhongjing established foundational medication principles for Traditional Chinese Medicine." },
-        { ref: "[Point 44 / Slides]", q: "During the Western Han Dynasty, Zhang Cang compiled and finalized which foundational math text that recorded the world's earliest systematic solutions for simultaneous linear equations?", options: ["The Sea Island Mathematical Manual", "The Nine Chapters on the Mathematical Art", "Continued Ancient Mathematics Classic", "Daming Calendar"], answer: 1, exp: "Zhang Cang compiled 'The Nine Chapters on the Mathematical Art' (Jiu Zhang Suan Shu)." },
-        { ref: "[Point 44 / Slides]", q: "Which ancient Chinese mathematician invented the cyclotomic method (iterative algorithm for pi) and developed advanced distance surveying?", options: ["Zu Chongzhi", "Qin Jiushao", "Liu Hui", "Wang Xiaotong"], answer: 2, exp: "Liu Hui (Three Kingdoms period) introduced this early limit and approximation thinking." },
-        { ref: "[Point 44 / Slides]", q: "Which brilliant mathematician calculated pi (π) to 7 decimal places, a world-leading achievement that stood for over 1,000 years?", options: ["Zu Chongzhi", "Guo Shoujing", "Liu Hui", "Zhang Cang"], answer: 0, exp: "Zu Chongzhi (Southern and Northern Dynasties) calculated this extremely precise value of pi." },
-        { ref: "[Point 44 / Slides]", q: "Qin Jiushao, a mathematician of the Southern Song Dynasty, is most famous for creating which landmark advanced algorithm?", options: ["The Cyclotomic Method", "The Chinese Remainder Theorem (Dayan Method)", "Systematic solutions for simultaneous linear equations", "The Daming Calendar"], answer: 1, exp: "Qin Jiushao developed the Chinese Remainder Theorem and numerical solutions for higher-order equations." },
-        { ref: "[Point 45 / Slides]", q: "The 'Shoushi Calendar' (Season-Granting Calendar) was the most accurate calendar in the world at its time, predating the Gregorian calendar's accuracy by 300 years. Who compiled it?", options: ["Zu Chongzhi", "Matteo Ricci", "Guo Shoujing", "Shen Que"], answer: 2, exp: "Guo Shoujing compiled the Shoushi Calendar during the Yuan Dynasty." },
-        
-        // Foreign Exchange & Imperial System
-        { ref: "[Point 46 / Slides]", q: "Who was Matteo Ricci?", options: ["A Venetian merchant who served under Kublai Khan's Yuan Dynasty.", "An Italian Jesuit missionary in the late Ming Dynasty who brought Western astronomy and math to China.", "The British general who initiated the First Opium War.", "A Portuguese explorer who established the Macao colony."], answer: 1, exp: "Matteo Ricci (1552-1610) was a key figure in early Sino-Western exchange, bridging the two civilizations. Marco Polo was the Venetian merchant." },
-        { ref: "[Point 47 / Slides]", q: "Why was Catholicism prohibited in China during the late-Ming dynasty (the 1616 Nanjing Incident)?", options: ["Because Catholic missionaries refused to translate the Bible into Chinese.", "Due to cultural clashes (monotheism vs. Confucian ancestor worship) and political fears of espionage and rebellion.", "Because European powers launched the Opium Wars at that time.", "Because Matteo Ricci violently attacked the emperor."], answer: 1, exp: "The ban was driven by cultural conflicts over ancestral rites, political fears of subversion/rebellion, and intellectual resistance from conservative literati." },
-        { ref: "[Point 48 / Slides]", q: "Who authored the 'Illustrated Survey of Foreign Nations' (Hai Guo Tu Zhi) in response to the First Opium War?", options: ["Lin Zexu", "Wei Yuan", "Sun Yat-sen", "Deng Xiaoping"], answer: 1, exp: "Wei Yuan compiled this 100-scroll treatise to introduce the geography and strategy of the West to China after the shock of the Opium War." },
-        { ref: "[Point 50 / Slides]", q: "When did the Imperial Examination system (Keju) officially begin, and when was it abolished?", options: ["Began in Han Dynasty; Abolished in Ming Dynasty", "Began in Qin Dynasty; Abolished in 1949", "Began in Sui Dynasty (605 AD); Abolished in late Qing Dynasty (1905)", "Began in Tang Dynasty; Still in use today"], answer: 2, exp: "It started in the Sui Dynasty to replace aristocratic recommendations with merit-based written exams, and ended in 1905." },
-        { ref: "[Point 50 / Slides]", q: "What was a significant DEMERIT of the Imperial Examination system during the Ming and Qing dynasties?", options: ["It broke the monopoly of wealthy clans.", "It allowed ordinary poor scholars to gain official positions.", "It used the rigid 'eight-legged essay', which restrained thinking and discouraged creativity.", "It focused entirely on modern physics and engineering instead of ethics."], answer: 2, exp: "While the system had merits like social mobility, the rigid essay format in later dynasties stifled innovation and practical problem-solving." },
-        { ref: "[Point 51 / Slides]", q: "Which of the following was NOT a core function of the ancient Great Wall?", options: ["Military defense against northern nomadic invasions", "Border governance, monitoring traffic, and restricting smuggling", "Protecting inland agriculture and the Silk Road trade route", "Serving as a massive aqueduct to transport water from the Yangtze to Beijing"], answer: 3, exp: "The Great Wall was for defense, border control, economic protection, and cultural division. The Grand Canal transported water/goods." },
-        
-        // Tea & Modern History (Opium Wars)
-        { ref: "[Point 52 / Slides]", q: "According to the classification by fermentation degree, which type of Chinese tea is completely unfermented?", options: ["Black tea", "Green tea", "Oolong tea", "White tea"], answer: 1, exp: "Green tea is unfermented, Oolong is semi-fermented, and Black tea is fully fermented." },
-        { ref: "[Point 53 / Slides]", q: "What was the direct cause of the First Opium War (1840-1842)?", options: ["China invaded British India to seize tea plantations.", "Britain illegally smuggled opium into China to reverse a trade deficit, and Qing official Lin Zexu destroyed it.", "France and Britain demanded the opening of Beijing to foreign diplomats.", "The Boxer Rebellion attacked foreign embassies."], answer: 1, exp: "The war started after Lin Zexu confiscated and destroyed British opium at Humen to stop the severe social and economic damage it was causing." },
-        { ref: "[Point 53 / Slides]", q: "What were the consequences of the Treaty of Nanjing (1842)?", options: ["China gained control of London and Paris.", "China opened five treaty ports, ceded Hong Kong Island to Britain, and lost tariff autonomy.", "The Qing dynasty immediately collapsed and was replaced by a republic.", "Foreign powers were permanently expelled from China."], answer: 1, exp: "It was China's first modern unequal treaty, beginning its descent into a semi-colonial and semi-feudal society." },
-        { ref: "[Point 53 / Slides]", q: "During which conflict did Anglo-French allied forces invade northern China, occupy Beijing, and burn down the Old Summer Palace in 1860?", options: ["First Opium War", "Second Opium War", "Sino-Japanese War", "The Taiping Rebellion"], answer: 1, exp: "The burning of the Old Summer Palace occurred during the Second Opium War (1856-1860)." },
-        
-        // Modern Society, Education & Politics
-        { ref: "[Point 54]", q: "Which of the following is a favorable policy implemented by the Chinese government for minority ethnic group students?", options: ["They are excluded from taking the Gaokao.", "They receive lower Gaokao score requirements and special enrollment quotas.", "They are strictly forbidden from learning their mother tongue.", "They must pay double tuition fees for public universities."], answer: 1, exp: "Policies include lower Gaokao score requirements, special quotas, scholarships, and bilingual education to support minority development." },
-        { ref: "[Point 55]", q: "What is the goal of China's 'Double First-Class' Initiative launched in 2017?", options: ["To build world-class universities and first-class academic disciplines.", "To ensure every citizen gets a master's degree.", "To replace all Chinese universities with foreign branch campuses.", "To build 100 new primary schools in rural areas."], answer: 0, exp: "It replaces the older '985' and '211' projects with the aim of elevating Chinese higher education to top-tier global standards." },
-        { ref: "[Point 56 / Slides]", q: "What is the official name of China's political party system?", options: ["Two-party democratic rotation system", "Single-party absolute dictatorship with no public consultation", "System of multi-party cooperation and political consultation under the leadership of the Communist Party of China", "Constitutional monarchy with a parliament"], answer: 2, exp: "The CPC is the ruling party, and 8 democratic parties act as 'participating parties' in a cooperative (not confrontational) framework." },
-        { ref: "[Point 57 / Slides]", q: "According to the study guide, what is a core advantage of the Chinese political system over Western-style democracy?", options: ["It features frequent party rotation every four years.", "It allows for stable, long-term policy planning (like Five-Year Plans) free from partisan political interference.", "It relies heavily on capital and interest groups to make decisions.", "It encourages endless parliamentary debates and partisan vetoes."], answer: 1, exp: "China's system avoids short-term election-driven policies, allowing for far-sighted, consistent national strategies and efficient resource mobilization." },
-        
-        // Environment, Economy & Global Initiatives
-        { ref: "[Point 58 / Slides]", q: "What is the primary purpose of China's 'Grain for Green' project?", options: ["To genetically modify wheat and rice crops.", "To convert farmland back to forests and grasslands to prevent soil erosion and restore ecosystems.", "To build urban skyscrapers on top of existing farmlands.", "To export green tea to European markets."], answer: 1, exp: "It is a major ecological restoration project designed to combat desertification and soil erosion." },
-        { ref: "[Point 60 / Slides]", q: "What is considered the CORE reason for China's massive economic leap and poverty alleviation since 1978?", options: ["The First Opium War", "The invention of high-speed rail", "The Reform and Opening-up Policy", "The complete isolation from foreign capital"], answer: 2, exp: "Initiated by Deng Xiaoping, this policy broke the rigid planned economy, introduced market mechanisms, and embraced global trade." },
-        { ref: "[Point 61 / Slides]", q: "Which of the following is NOT one of the five key features of 'Chinese Modernization'?", options: ["Modernization of a huge population", "Modernization with common prosperity for all", "Harmonious coexistence between humanity and nature", "Modernization through military expansion, colonization, and plunder"], answer: 3, exp: "Chinese modernization specifically pursues PEACEFUL development, distinguishing it from historical Western models that relied on colonization." },
-        { ref: "[Point 61 / Slides]", q: "Does the concept of 'Chinese Modernization' demand that other developing countries copy China's exact model?", options: ["Yes, China forces other countries to adopt its exact system.", "No, it explicitly states that there is no universal model and each country must adapt experiences to its own unique national reality.", "Yes, but only for countries in Asia.", "No, because China's model has failed completely."], answer: 1, exp: "China maintains that modernization is not westernization, nor is it a single model to be copied. It offers a reference, but requires independent adaptation." },
-        { ref: "[Point 64]", q: "What does the 'One Belt and One Road' Initiative (BRI) aim to achieve?", options: ["Build a physical defensive wall around the entire Asian continent.", "Promote international cooperation, mutual benefit, and common development through infrastructure, trade, and cultural exchanges.", "Establish a single global currency controlled by China.", "Restrict all global trade to countries within the Silk Road region."], answer: 1, exp: "Proposed in 2013, the BRI focuses on infrastructure construction and trade liberalization to achieve shared development." },
-        { ref: "[Point 65 / Slides]", q: "What is the core idea behind the concept of a 'Community with a Shared Future for Mankind'?", options: ["All countries are entirely independent and should ignore global problems.", "Only wealthy nations should dictate global policy.", "All countries are interdependent, and must use mutual respect and win-win cooperation to address global challenges like climate change and poverty.", "The world should be united under a single global government."], answer: 2, exp: "It is a foreign policy concept advocating for global cooperation, justice, and shared responsibility, repeatedly included in UN resolutions." },
-        { ref: "[Point 66 / Slides]", q: "What is the 'System of Regional Ethnic Autonomy' in China?", options: ["A system where minority areas become fully independent, sovereign nations.", "A system where all ethnic minorities are forced to assimilate into Han culture.", "A basic political system where minorities exercise self-governance to manage local cultural and economic affairs under the unified leadership of the state.", "A system that bans minorities from holding government positions."], answer: 2, exp: "It balances national territorial integrity with the protection and self-governance of ethnic minority rights and cultures." },
-        { ref: "[Point 69 / Slides]", q: "The evolution of China's family planning policy (from the 'one-child' policy in the 1980s to the 'three-child' policy in 2021) primarily reflects which governance principle?", options: ["A desire to completely depopulate the country.", "A rigid refusal to change outdated laws.", "Seeking truth from facts, respecting objective demographic laws (like aging trends), and a people-centered philosophy.", "A goal to aggressively expand the military through population growth."], answer: 2, exp: "The policy was adapted pragmatically to changing national conditions, balancing long-term sustainable development with immediate family needs." }
+    // --- GEOGRAPHY, DEMOGRAPHICS & BASIC FACTS ---
+    { ref: "[Point 1]", q: "Which of the following accurately describes the 'three-step' descending topography of China's terrain?", options: [
+        "The highest step is in the east (plains), middle step in the center, and lowest step in the west (mountains).",
+        "The highest step is in the west (Qinghai-Tibet Plateau), the middle step consists of basins/plateaus, and the lowest step is in the east (plains/low hills).",
+        "The terrain is perfectly flat across the entire country, except for Mount Everest in the north.",
+        "The highest step is in the south (tropical rainforests) and descends towards the north (desert regions)."
+    ], answer: 1, exp: "China's terrain descends like a staircase from west to east. The west contains the massive Qinghai-Tibet Plateau, while the east consists of broad plains and hills where most of the agriculture and population are concentrated." },
+    
+    { ref: "[Point 4]", q: "What is the exact administrative division of the People's Republic of China according to the study guide?", options: [
+        "30 provinces, 2 autonomous regions, and 1 federal district.",
+        "50 states, 5 territories, and 2 Special Economic Zones.",
+        "23 provinces, 5 autonomous regions, 4 direct-controlled municipalities, and 2 Special Administrative Regions.",
+        "22 provinces, 4 autonomous regions, 5 direct-controlled municipalities, and 3 SARs."
+    ], answer: 2, exp: "China has 23 provinces, 5 autonomous regions (Tibet, Xinjiang, Inner Mongolia, Ningxia, Guangxi), 4 direct municipalities (Beijing, Shanghai, Tianjin, Chongqing), and 2 SARs (Hong Kong, Macau)." },
+
+    { ref: "[Point 9]", q: "Which of the following statements about Sichuan province is TRUE?", options: [
+        "Its capital is Chongqing, and it is located in Eastern China.",
+        "Its capital is Chengdu, it is located in Southwestern China, and it is home to Mount Emei and giant panda reserves.",
+        "Its primary dialect is Cantonese, and it is famous for the Mogao Caves.",
+        "It is an autonomous region located on the highest step of China's topography."
+    ], answer: 1, exp: "Sichuan's capital is Chengdu. It is in Southwest China, speaks Sichuanese, and features landmarks like Mt. Emei, Jiuzhaigou Valley, the Leshan Giant Buddha, and panda reserves." },
+
+    // --- PHILOSOPHY, RELIGION & ANCIENT HISTORY ---
+    { ref: "[Point 10]", q: "Which ancient philosopher founded Daoism (Taoism) and emphasized the 'Dao' and 'Wuwei' (action through non-action)?", options: [
+        "Confucius",
+        "Han Feizi",
+        "Laozi",
+        "Mozi"
+    ], answer: 2, exp: "Laozi founded Daoism, focusing on naturalness and simplicity. Confucius founded Confucianism (emphasizing Ren, Li, and filial piety)." },
+
+    { ref: "[Point 11]", q: "During the 'Hundred Schools of Thought' period, which ideological school advocated for strict law and state control?", options: [
+        "Confucianism",
+        "Legalism",
+        "Mohism",
+        "Daoism"
+    ], answer: 1, exp: "Legalism believed in strict laws to control society. Mohism advocated for universal love, Confucianism for moral hierarchies, and Daoism for natural simplicity." },
+
+    { ref: "[Point 13]", q: "What does the Liangzhu Site (5300–4300 years ago) located in the Yangtze River Delta represent in Chinese history?", options: [
+        "The capital of the Qing Dynasty.",
+        "The site where the Terracotta Warriors were buried.",
+        "An early state civilization indicated by a highly stratified Neolithic jade culture with a clear division of social classes.",
+        "The exact location where the First Opium War began."
+    ], answer: 2, exp: "The Liangzhu Site provides crucial archaeological evidence of an early Chinese state through its stratified jade and pottery burials." },
+
+    { ref: "[Point 17]", q: "What is the earliest known form of Chinese character, carved on turtle shells and animal bones for divination during the Shang Dynasty?", options: [
+        "Shuowen Jiezi",
+        "Oracle Bone Script (Jiaguwen)",
+        "Regular Script (Kaishu)",
+        "Cursive Script (Caoshu)"
+    ], answer: 1, exp: "Oracle Bone Script (Jiaguwen) is the oldest verified form of Chinese writing, primarily used by diviners." },
+
+    // --- ARTS, LITERATURE, ARCHITECTURE & CULTURE ---
+    { ref: "[Point 15]", q: "In traditional Chinese architecture, what does the principle of 'Central Axis Symmetry' represent?", options: [
+        "Coexisting harmoniously with the surrounding mountains and water.",
+        "Encoding social rank through roof styles, colors, and column numbers.",
+        "A layout centered on a north-south axis with mirror-image balance, representing central respect and cosmic balance.",
+        "Using fabric ties instead of modern buttons on structural pillars."
+    ], answer: 2, exp: "Central Axis Symmetry represents cosmic balance and central respect. Coexisting with nature is 'Heaven-Human Unity', and encoding social rank is 'Ritual Hierarchy'." },
+
+    { ref: "[Point 18]", q: "Who compiled 'Shuowen Jiezi', China's first systematic dictionary that analyzed 9,353 characters, earning him the title of 'Chinese character sage'?", options: [
+        "Cang Jie",
+        "Wang Xizhi",
+        "Xu Shen",
+        "Du Fu"
+    ], answer: 2, exp: "Xu Shen compiled this foundational dictionary. Cang Jie is the legendary 'creator' of characters, while Wang Xizhi is the Sage of Calligraphy." },
+
+    { ref: "[Point 21]", q: "What is the main principle of traditional Chinese Shanshui (mountain and water) painting?", options: [
+        "To achieve a hyper-realistic, photograph-like visual representation of a landscape.",
+        "To capture the inner spirit, energy, and harmony of nature, utilizing blank space to stimulate the viewer's imagination.",
+        "To exclusively use bright oil paints to depict historical battles.",
+        "To completely fill the canvas with no negative space left behind."
+    ], answer: 1, exp: "Shanshui emphasizes the philosophical concept of capturing the 'spirit' or 'energy' of nature, using negative space heavily." },
+
+    { ref: "[Point 23]", q: "What were the 'Four Arts' (Siyi) expected to be mastered by an ancient Chinese scholar?", options: [
+        "Archery, Charioteering, Calligraphy, and Mathematics",
+        "Poetry, Calligraphy, Painting, and the Seal",
+        "Qin (stringed instrument), Qi (Go board game), Shu (calligraphy), and Hua (painting)",
+        "Face-changing, fire-breathing, dancing, and singing"
+    ], answer: 2, exp: "Qin, Qi, Shu, and Hua were the four basic skills required of a refined literati in ancient China. (Poetry, Calligraphy, Painting, and the Seal are the four elements of a masterpiece painting)." },
+
+    { ref: "[Point 25]", q: "Which of the following describes traditional 'Hanfu' clothing?", options: [
+        "A fitted dress developed by the Manchu people in the Qing dynasty.",
+        "A cross-collared right lapel, loose wide sleeves, layered construction, and fabric ties instead of buttons.",
+        "A modernized suit created by Sun Yat-sen featuring numerous pockets.",
+        "A military uniform characterized by heavy metal zippers and a left lapel."
+    ], answer: 1, exp: "Hanfu is the traditional clothing system of the Han Chinese, easily recognizable by its 'Jiaoling Youren' (cross-collared right lapel) and lack of buttons." },
+
+    { ref: "[Point 26]", q: "In Beijing Opera, what does the 'Jing' role specifically represent?", options: [
+        "The standard female role",
+        "The painted-face male role",
+        "The male clown role",
+        "The standard male role"
+    ], answer: 1, exp: "The four roles are Sheng (male), Dan (female), Jing (painted face male), and Chou (male clown)." },
+
+    { ref: "[Point 27]", q: "Face-changing (Bian Lian) and fire-breathing are spectacular stunts belonging uniquely to which art form?", options: [
+        "Beijing Opera",
+        "Sichuan Opera",
+        "Shaolin Kung Fu",
+        "Shanshui Painting"
+    ], answer: 1, exp: "These stunts are the hallmark of Sichuan Opera, historically used to dramatically represent sudden emotional shifts." },
+
+    { ref: "[Point 28]", q: "Which two poets represent the peak of Tang Dynasty poetry, earning the titles 'Poetry Sage' and 'Poet Immortal' respectively?", options: [
+        "Li Bai (Sage) and Bai Juyi (Immortal)",
+        "Du Fu (Sage) and Li Bai (Immortal)",
+        "Wang Wei (Sage) and Du Fu (Immortal)",
+        "Zhang Zeduan (Sage) and Ouyang Xun (Immortal)"
+    ], answer: 1, exp: "Du Fu is the Poetry Sage (serious, patriotic, historical). Li Bai is the Poet Immortal (heroic, romantic, bold imagination)." },
+
+    // --- EMPERORS, CAPITALS & MONUMENTS ---
+    { ref: "[Point 31]", q: "Which emperor standardized writing, weights, measures, and currency, began the Great Wall, and commissioned the Terracotta Warriors?", options: [
+        "Emperor Wu of Han",
+        "Kublai Khan",
+        "Qin Shi Huang",
+        "Wu Zetian"
+    ], answer: 2, exp: "Qin Shi Huang was the First Emperor of a unified China, responsible for these massive standardization policies and building projects." },
+
+    { ref: "[Point 32]", q: "Who was the only officially recognized female sovereign (emperor) in Chinese history?", options: [
+        "Empress Dowager Cixi",
+        "Yang Guifei",
+        "Hua Mulan",
+        "Wu Zetian"
+    ], answer: 3, exp: "Wu Zetian ruled during the Tang Dynasty (establishing her own Wu Zhou Dynasty) and is the only recognized female emperor." },
+
+    { ref: "[Point 34]", q: "Which city is highly celebrated in Chinese history for serving as the capital of 13 major dynasties, including the Qin, Han, and Tang?", options: [
+        "Beijing",
+        "Nanjing",
+        "Xi'an (Chang'an)",
+        "Luoyang"
+    ], answer: 2, exp: "Xi'an is one of China's oldest and most prestigious ancient capitals, and is the resting place of the Terracotta Army." },
+
+    { ref: "[Point 51]", q: "According to the study guide, which of the following was NOT a historical function of the Great Wall?", options: [
+        "Military defense against northern invasions.",
+        "Border governance and cultural division/communication.",
+        "Serving as a massive inland waterway to transport crops to Beijing.",
+        "Economic protection for the Silk Road trade route."
+    ], answer: 2, exp: "The Great Wall was for defense, border control, and trade protection. Transporting crops by waterway was the function of the Grand Canal." },
+
+    // --- SCIENCE, MATH, MEDICINE & INVENTIONS ---
+    { ref: "[Point 40]", q: "Which group of technological achievements is famously known as the 'Four Great Inventions' of ancient China?", options: [
+        "Silk, Porcelain, Iron Casting, and Tea",
+        "Papermaking, Printing, Gunpowder, and the Compass",
+        "Acupuncture, the Abacus, Shanshui painting, and the Seismograph",
+        "The Crossbow, Paper money, Movable type, and Bronze chariots"
+    ], answer: 1, exp: "These four inventions heavily influenced the development of global civilization and technology." },
+
+    { ref: "[Point 42]", q: "In Traditional Chinese Medicine (TCM), what are the four fundamental diagnostic methods?", options: [
+        "Observation, Auscultation/Olfaction, Interrogation, and Palpation",
+        "Acupuncture, Herbal medicine, Cupping, and Massage (Tui Na)",
+        "Blood testing, X-rays, Surgery, and Dietary therapy",
+        "Meditation, Fasting, Tai Chi, and Divination"
+    ], answer: 0, exp: "The four diagnostic methods are looking, listening/smelling, asking, and touching (pulse-taking). The second option lists the 'curing ways' (treatments)." },
+
+    { ref: "[Point 43]", q: "Who is known as the 'Medicine sage' of TCM for writing the 'Treatise on Cold Pathogenic and Miscellaneous Diseases' during the Eastern Han dynasty?", options: [
+        "Hua Tuo",
+        "Li Shizhen",
+        "Zhang Zhongjing",
+        "Sun Simiao"
+    ], answer: 2, exp: "Zhang Zhongjing established foundational medication principles for TCM that are still heavily studied and applied today." },
+
+    { ref: "[Point 44]", q: "Which ancient Chinese mathematician calculated the most accurate value of pi in the ancient world (to 7 decimal places)?", options: [
+        "Zhang Cang",
+        "Liu Hui",
+        "Zu Chongzhi",
+        "Qin Jiushao"
+    ], answer: 2, exp: "Zu Chongzhi made this incredible calculation. Liu Hui invented the cyclotomic method, Zhang Cang compiled 'The Nine Chapters', and Qin Jiushao developed the Chinese Remainder Theorem." },
+
+    { ref: "[Point 45]", q: "Compiled by Guo Shoujing in the Yuan Dynasty, the 'Shoushi Calendar' was historically significant because:", options: [
+        "It was the first calendar to perfectly predict earthquakes.",
+        "It was entirely written in Western Latin by Jesuit missionaries.",
+        "It was nearly identical in accuracy to the modern Gregorian calendar but created 300 years earlier.",
+        "It reduced the lunar year to exactly 300 days to simplify farming."
+    ], answer: 2, exp: "The Shoushi (Season-Granting) Calendar was the pinnacle of ancient Chinese astronomy, rivaling modern calendar accuracy centuries ahead of Europe." },
+
+    // --- FOREIGN EXCHANGE & HISTORY (OPIUM WARS) ---
+    { ref: "[Point 46]", q: "Which statement accurately describes the historical figures Marco Polo and Matteo Ricci?", options: [
+        "Marco Polo brought Western science to China in the Ming Dynasty; Matteo Ricci served Kublai Khan in the Yuan Dynasty.",
+        "Both were British diplomats who initiated the Opium Wars.",
+        "Marco Polo was a 13th-century traveler in the Yuan Dynasty; Matteo Ricci was a Jesuit missionary who brought Western science to the Ming Dynasty.",
+        "Marco Polo invented the Silk Road; Matteo Ricci was a Portuguese explorer who conquered Macau."
+    ], answer: 2, exp: "Marco Polo introduced China to Europe via his travels in the Yuan Dynasty. Matteo Ricci was a key figure in Sino-Western scientific and cultural exchange in the late Ming Dynasty." },
+
+    { ref: "[Point 47]", q: "What was a primary cause of the prohibition of Catholicism in China during the late-Ming dynasty (the 1616 Nanjing Incident)?", options: [
+        "Catholic missionaries refused to pay taxes to the Emperor.",
+        "A combination of cultural/ethical clashes (like ancestor worship), political security fears, and intellectual resistance to Western science.",
+        "The Jesuits organized a massive peasant rebellion that burned down Nanjing.",
+        "The Vatican officially declared war on the Ming Dynasty."
+    ], answer: 1, exp: "The prohibition was a complex result of cultural misunderstandings, intellectual rivalry, and political fears of foreign collusion." },
+
+    { ref: "[Point 48]", q: "Who authored the 'Illustrated Survey of Foreign Nations' (Hai Guo Tu Zhi) as an initial Chinese response to the First Opium War?", options: [
+        "Lin Zexu",
+        "Zheng He",
+        "Wei Yuan",
+        "Sun Yat-sen"
+    ], answer: 2, exp: "Wei Yuan wrote this significant work to help China understand the geography, technology, and strategy of Western nations after their shocking defeat in the Opium War." },
+
+    { ref: "[Point 50]", q: "Which of the following was a major DEMERIT of the Imperial Examination system (Keju) before it was abolished in 1905?", options: [
+        "It provided fair social mobility for commoners.",
+        "It established unified cultural and stable governance.",
+        "It relied on rigid writing rules (eight-legged essays) and was limited to Confucian classics, which stifled creativity.",
+        "It heavily prioritized advanced physics and mathematics over moral philosophy."
+    ], answer: 2, exp: "While it had merits like social mobility, its rigid format and focus on ancient classics over practical sciences stifled innovation and caused social conservatism in later dynasties." },
+
+    { ref: "[Point 53]", q: "What were the immediate consequences of the First Opium War (1840-1842)?", options: [
+        "Anglo-French forces burned down the Old Summer Palace.",
+        "Britain smuggled opium out of China, forcing the Qing dynasty to close all borders.",
+        "China signed the Treaty of Nanjing, opened ports, ceded Hong Kong, and became a semi-colonial society.",
+        "The Qing Dynasty immediately collapsed, and the Republic of China was founded."
+    ], answer: 2, exp: "The First Opium War resulted in the Treaty of Nanjing. The burning of the Old Summer Palace happened later, during the Second Opium War (1856-1860)." },
+
+    // --- MODERN SOCIETY, EDUCATION & POLICIES ---
+    { ref: "[Point 54]", q: "Which of the following is traditionally an example of favorable policies implemented for minority ethnic group students in China?", options: [
+        "They are permanently exempt from attending university.",
+        "They receive bonus points on the Gaokao, specialized university quotas, and funding for bilingual education.",
+        "They are required to take the college entrance exam entirely in English.",
+        "They are only allowed to study agriculture or traditional medicine."
+    ], answer: 1, exp: "These policies aim to promote educational equity, protect ethnic cultures, and ensure minority representation in higher education." },
+
+    { ref: "[Point 55]", q: "What is the primary goal of the 'Double First-Class' initiative started in 2015?", options: [
+        "To build world-class universities and first-class academic disciplines by the end of 2050.",
+        "To merge all high schools with local universities.",
+        "To create exactly 100 top universities, replacing the older Project 211.",
+        "To guarantee two university degrees for every Chinese citizen."
+    ], answer: 0, exp: "It is a modern initiative aiming to elevate China's higher education system to the very top tier globally by 2050." },
+
+    { ref: "[Point 69]", q: "How has China's family planning policy evolved over the decades?", options: [
+        "It began as a three-child policy in 1982 and evolved into a strict one-child policy in 2021.",
+        "It has remained exactly the same since 1982 to maintain strict population control.",
+        "It began in 1982 to control population growth, and evolved to a three-child policy in 2021, reflecting a pragmatic, people-centered approach to demographic changes.",
+        "It was entirely abolished in 2000, allowing unlimited children without state guidelines."
+    ], answer: 2, exp: "The policy evolved pragmatically to address demographic shifts, such as an aging population, demonstrating the principle of 'seeking truth from facts'." },
+
+    // --- POLITICS, ECONOMY & GLOBAL GOVERNANCE ---
+    { ref: "[Point 56]", q: "According to the document, what is the official political party system of China?", options: [
+        "A two-party democratic system where parties rotate power every four years.",
+        "A single-party absolute dictatorship with no public consultation.",
+        "A system of multi-party cooperation and political consultation under the leadership of the Communist Party of China.",
+        "A constitutional monarchy with the CPC acting as the parliament."
+    ], answer: 2, exp: "The CPC is the ruling party, and eight democratic parties are 'participating parties'. It focuses on cooperation and broad consultation rather than opposition." },
+
+    { ref: "[Point 57]", q: "What does the study guide list as an advantage of the Chinese political system over Western-style democracy?", options: [
+        "It relies heavily on capital and powerful interest groups to fund elections.",
+        "It allows for stable, long-term policy planning without short-term election-driven disruptions, reducing unnecessary partisan strife.",
+        "It guarantees that a completely new government will take over every five years to reverse previous policies.",
+        "It encourages endless parliamentary debates that halt governance efficiency."
+    ], answer: 1, exp: "The document highlights stable, long-term planning, high governance efficiency, and people-centered unified mobilization as key advantages." },
+
+    { ref: "[Point 60]", q: "What is cited as the primary reason for China becoming the world's second-largest economy and eliminating extreme poverty after 1978?", options: [
+        "The invention of the high-speed rail system.",
+        "The outcome of the Opium Wars.",
+        "The Reform and Opening-up policy, combined with market-oriented reforms and social stability.",
+        "The complete isolation of the Chinese market from foreign capital."
+    ], answer: 2, exp: "Launched by Deng Xiaoping in 1978, the Reform and Opening-up policy introduced market mechanisms domestically and opened coastal cities to global trade." },
+
+    { ref: "[Point 61]", q: "Which of the following is a defined feature of 'Chinese Modernization'?", options: [
+        "It strictly requires military expansion and colonization of neighboring territories.",
+        "It features modernization of a huge population, common prosperity for all, harmony with nature, and peaceful development.",
+        "It demands that all other developing nations exactly copy the Chinese model without alterations.",
+        "It completely abandons all traditional culture in favor of total Westernization."
+    ], answer: 1, exp: "Chinese modernization differs from historical Western models by explicitly pursuing peaceful development and common prosperity, and it acknowledges that it is a unique path not fully copyable by others." },
+
+    { ref: "[Point 64]", q: "What is the primary objective of the 'One Belt and One Road' Initiative (BRI) adopted in 2013?", options: [
+        "To build a physical defensive wall around the entire Asian continent.",
+        "To create a massive global infrastructure development strategy aiming to connect Asia with Africa and Europe via land and maritime networks.",
+        "To restrict all international trade strictly to countries within Asia.",
+        "To establish a single global currency controlled by the Chinese government."
+    ], answer: 1, exp: "The BRI involves investing in nearly 150 countries to enhance global connectivity, trade, and economic cooperation." },
+
+    { ref: "[Point 65]", q: "The foreign policy concept of a 'Community with a Shared Future for Mankind' proposes that:", options: [
+        "All nations should isolate themselves to prevent global conflicts.",
+        "Only wealthy superpower nations should dictate the rules of global governance.",
+        "The world should balance legitimate concerns of other countries while pursuing its own interests, promoting common development and world peace.",
+        "All countries must be united under a single, centralized global government."
+    ], answer: 2, exp: "Proposed by President Xi in 2013, it advocates for international interdependence, equity, and win-win cooperation to solve global challenges." },
+
+    { ref: "[Point 66]", q: "What is the 'System of Regional Ethnic Autonomy' in China?", options: [
+        "A system where ethnic minority regions become entirely independent, sovereign nations.",
+        "A system that forcibly assimilates all minorities into Han culture.",
+        "A system where autonomous organs are established in minority communities to exercise self-governance rights under the unified leadership of the state.",
+        "A system that bans minorities from managing local educational and cultural affairs."
+    ], answer: 2, exp: "This basic political system protects minority rights and promotes ethnic equality while maintaining national territorial integrity." },
+
+    { ref: "[Point 59]", q: "Which of the following is NOT one of the 'Five Principles of Peaceful Coexistence' established by China in the 1950s?", options: [
+        "Mutual respect for territorial integrity and sovereignty.",
+        "Mutual non-aggression and non-interference in internal affairs.",
+        "Equality and cooperation for mutual benefit.",
+        "Preemptive military intervention in neighboring disputes."
+    ], answer: 3, exp: "The five principles focus strictly on peaceful coexistence, respect, and non-interference. Preemptive military intervention contradicts this entirely." }        
     ], 
     def: [
-        { ref: "[Point 11]", term: "Mohism", def: "A school during the 'Hundred Schools of Thought' period that advocated for impartial care for all (universal love) and practical utility." },
-        { ref: "[Point 21]", term: "Main principle of Shanshui painting", def: "Capturing the spirit through form (yi spirit as the core, emphasizing artistic conception over realistic detail) and reflecting the Harmony between Humanity and Nature." },
-        { ref: "[Point 25]", term: "Zhongshanzhuang (Zhongshan Suit)", def: "A clothing style designed based on Sun Yat-sen’s ideas. It symbolizes modernization and patriotism, featuring a simple and practical style." },
-        { ref: "[Point 38]", term: "H&T chronology (干支纪年法)", def: "Heavenly Stems and Earthly Branches (gānzhī). It is China's traditional 60-year cyclical calendar system used to mark years, months, days, and hours." },
-        { ref: "[Point 46]", term: "Marco Polo", def: "A Venetian merchant and explorer who traveled to China in the 13th century, served under Kublai Khan's Yuan Dynasty for 17 years, and wrote a book introducing Europeans to the wealth and culture of the East." },
-        { ref: "[Point 53]", term: "University Certificates in China", def: "Graduation certificate (proving completion of academic requirements) and Degree certificate (proving achievement of a certain academic level, e.g., bachelor’s)." },
-        { ref: "[Point 59]", term: "Five principles of peaceful coexistence", def: "Proposed in the 1950s: 1) Mutual respect for sovereignty and territorial integrity, 2) Mutual non-aggression, 3) Non-interference in internal affairs, 4) Equality and mutual benefit, 5) Peaceful coexistence." },
-        { ref: "[Point 61]", term: "Chinese modernization", def: "A modernization path featuring a large population, common prosperity for all, harmony between humans and nature, and peaceful development, differing from Western modernization models." },
-        { ref: "[Point 65]", term: "Community with a Shared Future for Mankind", def: "A foreign policy concept emphasizing that all countries are interdependent. It advocates mutual respect, equity, and win-win cooperation to address global challenges like climate change and poverty." },
-        { ref: "[Point 66]", term: "System of Regional Ethnic Autonomy", def: "A basic political system where areas with concentrated ethnic minorities establish autonomous regions/prefectures to exercise rights to manage local affairs and develop their own cultures and economies." },
-        { ref: "[Point 67]", term: "Socialism with Chinese characteristics", def: "A development path combining Marxist principles with China’s national conditions, emphasizing CPC leadership, public ownership dominance, common prosperity, and integrating a market economy with government regulation." },
-        { ref: "[Point 1]", term: "Three-step altitude gradient", def: "The characteristic of China's terrain which is highest in the west (Qinghai-Tibet Plateau) and lowest in the east (coastal areas and plains)." },
-        { ref: "[Point 6]", term: "March of the Volunteers", def: "The national anthem of the People's Republic of China, composed by Nie Er with lyrics by Tian Han." },
-        { ref: "[Point 7]", term: "Five-starred Red Flag", def: "The national flag of China. The red symbolizes revolution, and the five stars represent the unity of the Chinese people under the leadership of the CPC." },
-        { ref: "[Point 13]", term: "Liangzhu Site (良渚遗址)", def: "The site of the earliest Chinese civilization (5300-4300 years ago) in the Yangtze River Delta, known for its Neolithic jade culture and early state structure." },
-        { ref: "[Point 15]", term: "Heaven-Human Unity (天人合一)", def: "A core principle in traditional Chinese architecture where buildings must coexist harmoniously with nature, mountains, and water." },
-        { ref: "[Point 15]", term: "Central Axis Symmetry", def: "An architectural layout principle where structures center on a north-south axis to embody 'central respect' and cosmic balance." },
-        { ref: "[Point 15]", term: "Ritual Hierarchy (礼制秩序)", def: "The design of architecture according to social rank, reflected in roof styles, courtyard depth, and colors (e.g., yellow for emperors)." },
-        { ref: "[Point 18]", term: "Shuowen Jiezi (《说文解字》)", def: "China's first systematic dictionary compiled by Xu Shen in the Han Dynasty, analyzing over 9,000 characters and establishing 540 radicals." },
-        { ref: "[Point 20]", term: "Wang Xizhi (王羲之)", def: "Known as the 'Sage of Calligraphy' (书圣), he revolutionized calligraphy scripts; his masterpiece is the 'Preface to the Lanting Collection'." },
-        { ref: "[Point 25]", term: "Hanfu (汉服)", def: "The traditional clothing system of the Han Chinese, characterized by cross-collared right lapels (jiaoling youren) and fabric ties instead of buttons." },
-        { ref: "[Point 28]", term: "Poet Immortal & Poet Sage", def: "Titles given to Li Bai (Poet Immortal) for his romantic style and Du Fu (Poet Sage) for his realism and patriotism during the Tang Dynasty." },
-        { ref: "[Point 34]", term: "Xi'an (Ancient Chang'an)", def: "One of China's most celebrated ancient capitals, serving as the seat of power for the Qin, Han, and Tang dynasties." },
-        { ref: "[Point 43]", term: "Zhang Zhongjing", def: "An eminent physician of the Eastern Han Dynasty known as the 'Master of TCM' and author of the 'Treatise on Cold Pathogenic and Miscellaneous Diseases'." },
-        { ref: "[Point 44]", term: "The Nine Chapters on the Mathematical Art", def: "A foundational text of ancient Chinese mathematics covering fractions, linear equations, and practical applied math." },
-        { ref: "[Point 50]", term: "Imperial Examination System (Keju)", def: "A civil service examination system started in the Sui Dynasty to select government officials based on merit and literary exams rather than noble birth." },
-        { ref: "[Point 51]", term: "The Great Wall", def: "A continuous defense system linked by Qin Shi Huang and reinforced in later dynasties to protect against northern nomadic invasions." },
-        { ref: "[Point 52]", term: "Chinese Tea", def: "A daily beverage with over 5,000 years of history, discovered as herbal medicine and later becoming a vital trade commodity on the Silk Road." },
-        { ref: "[Point 53]", term: "Opium War", def: "A series of conflicts in the mid-19th century between China and Britain that marked the beginning of China's modern history and foreign concessions." },
-        { ref: "[Point 55]", term: "Double First-Class Project", def: "A modern education initiative aimed at developing world-class Chinese universities and first-class academic disciplines." },
-        { ref: "[Point 59]", term: "Five Principles of Peaceful Coexistence", def: "The core of China's foreign policy: mutual respect for sovereignty, non-aggression, non-interference, equality, and peaceful coexistence." },
-        { ref: "[Point 62]", term: "Reform and Opening-up (改革开放)", def: "The policy launched in 1978 by Deng Xiaoping to shift China from a planned economy to a socialist market economy and open the country to foreign trade." },
-        { ref: "[Point 64]", term: "One Belt and One Road Initiative", def: "A global infrastructure and investment strategy proposed by China to enhance regional connectivity and economic cooperation." },
-        { ref: "[Point 65]", term: "Community with a Shared Future for Mankind", def: "A diplomatic vision proposed by China for global cooperation, international justice, and a stable world order." },
-        { ref: "[Point 66]", term: "System of Regional Ethnic Autonomy", def: "A basic political system in China where ethnic minorities exercise self-governance in areas where they live in compact communities." },
-        { ref: "[Point 67]", term: "Socialism with Chinese Characteristics", def: "The official ideology of the CPC that adapts Marxist theory to China's specific national conditions and traditional culture." },
-        { ref: "[Point 61]", term: "Chinese Modernization", def: "A path of modernization involving a huge population, common prosperity for all, material and cultural progress, and peaceful development." }
+         // --- GEOGRAPHY & SYMBOLS ---
+    { ref: "[Point 1]", term: "Three-step altitude gradient (Staircase Topography)", def: "The characteristic of China's terrain which descends from west to east. The highest step is the Qinghai-Tibet Plateau in the west, the middle consists of basins/plateaus, and the lowest step consists of broad plains and low hills in the east." },
+    { ref: "[Point 6]", term: "March of the Volunteers (义勇军进行曲)", def: "The official national anthem of the People's Republic of China." },
+    { ref: "[Point 7]", term: "Five-Starred Red Flag", def: "The national flag of China." },
+    
+    // --- PHILOSOPHY, RELIGION & ANCIENT HISTORY ---
+    { ref: "[Point 10]", term: "Confucianism (Confucius)", def: "A philosophy that emphasizes 'Ren' (benevolence/humaneness), 'Li' (proper rites/etiquette), filial piety, and social harmony through strict moral and social hierarchies." },
+    { ref: "[Point 10]", term: "Daoism (Laozi)", def: "A philosophy that emphasizes the 'Dao' (the Way/natural order of the universe) and 'Wuwei' (action through non-action, naturalness, and simplicity)." },
+    { ref: "[Point 11]", term: "Hundred Schools of Thought (百家争鸣)", def: "A golden age of Chinese philosophy during the Spring/Autumn and Warring States periods featuring ideological schools like Confucianism, Daoism, Legalism, and Mohism." },
+    { ref: "[Point 11]", term: "Legalism", def: "An ancient philosophical school that advocated for strict law and state control to govern society." },
+    { ref: "[Point 13]", term: "Liangzhu Site (良渚遗址)", def: "The site of the earliest Chinese civilization (5300-4300 years ago) in the Yangtze River Delta, indicating an early state with a clear division of social classes through stratified Neolithic jade culture." },
+    { ref: "[Point 16]", term: "Zheng He", def: "A famous mariner and fleet admiral during the early Ming Dynasty who commanded seven monumental expeditionary 'Voyages to the Western Seas' (Southeast Asia, Middle East, East Africa)." },
+    { ref: "[Point 17]", term: "Oracle Bone Script (Jiaguwen)", def: "The earliest known form of Chinese character, carved on turtle shells and animal bones for divination during the Shang Dynasty." },
+
+    // --- ARCHITECTURE, ARTS & LITERATURE ---
+    { ref: "[Point 15]", term: "Heaven-Human Unity (天人合一)", def: "An architectural principle dictating that buildings must coexist harmoniously with nature." },
+    { ref: "[Point 15]", term: "Central Axis Symmetry (中轴对称)", def: "An architectural layout centering on a north-south axis with mirror-image balance, representing central respect and cosmic balance." },
+    { ref: "[Point 15]", term: "Ritual Hierarchy (礼制秩序)", def: "An architectural principle that encodes social rank through strict design rules such as roof style, color, and column numbers." },
+    { ref: "[Point 18]", term: "Xu Shen & Shuowen Jiezi", def: "Xu Shen is the 'Chinese character sage' who compiled Shuowen Jiezi, China's first systematic dictionary that analyzed 9,353 characters and established 540 radicals." },
+    { ref: "[Point 19]", term: "Four Great Classical Novels", def: "Romance of the Three Kingdoms, Water Margin, Journey to the West, and Dream of the Red Chamber." },
+    { ref: "[Point 21]", term: "Shanshui Painting Principle", def: "Translates to 'mountain and water'. The main principle is to capture the inner spirit, energy, and harmony of nature rather than exact realism, heavily utilizing blank space." },
+    { ref: "[Point 22]", term: "Four Elements of Chinese Painting", def: "Poetry, Calligraphy, Painting, and the Seal (stamping)." },
+    { ref: "[Point 23]", term: "The Four Arts (Siyi)", def: "The four basic skills expected of an ancient Chinese scholar: Qin (stringed instrument), Qi (Go board game), Shu (calligraphy), and Hua (painting)." },
+    { ref: "[Point 24]", term: "Mogao Caves", def: "A UNESCO World Heritage site located in Dunhuang, famous for its massive collection of Buddhist grottoes and frescos." },
+    { ref: "[Point 25]", term: "Hanfu (汉服)", def: "The traditional clothing system of the Han Chinese up to the Ming Dynasty, characterized by a cross-collared right lapel, wide sleeves, and fabric ties instead of buttons." },
+    { ref: "[Point 26]", term: "Four Roles of Beijing Opera", def: "Sheng (male), Dan (female), Jing (painted face male), and Chou (male clown)." },
+    { ref: "[Point 27]", term: "Sichuan Opera Stunts", def: "Famous for Face-changing (Bian Lian) and fire-breathing." },
+    { ref: "[Point 28]", term: "Poetry Sage (Du Fu)", def: "A Tang Dynasty poet known for his serious, patriotic poetry that meticulously recorded historical events." },
+    { ref: "[Point 28]", term: "Poet Immortal (Li Bai)", def: "A Tang Dynasty poet known for his heroic, romantic style and bold imagination." },
+    
+    // --- EMPERORS, HISTORY & MONUMENTS ---
+    { ref: "[Point 31]", term: "Qin Shi Huang", def: "The First Emperor of a unified China. He standardized writing, weights, and currency, began the Great Wall, and commissioned the Terracotta Warriors in Xi'an." },
+    { ref: "[Point 32]", term: "Wu Zetian", def: "The only officially recognized female sovereign (emperor) in Chinese history, ruling during the Tang/Wu Zhou Dynasty." },
+    { ref: "[Point 51]", term: "Functions of the Great Wall", def: "Military defense, border governance, economic protection for the Silk Road, and cultural division/communication." },
+
+    // --- CALENDARS, MEDICINE & SCIENCE ---
+    { ref: "[Point 37]", term: "H&T Chronology (干支纪年法)", def: "The Heavenly Stems and Earthly Branches. A traditional Chinese sexagenary (60-year) cycle system used for calculating lunar years, months, days, and hours." },
+    { ref: "[Point 38]", term: "Jieqi (Solar Terms)", def: "24 specific points on the lunisolar calendar marking astronomical events and seasons, traditionally used to guide agriculture." },
+    { ref: "[Point 40]", term: "Four Great Inventions", def: "Papermaking, Printing (woodblock and movable type), Gunpowder, and the Compass." },
+    { ref: "[Point 42]", term: "Four Diagnosis Methods (TCM)", def: "Observation (looking), Auscultation and Olfaction (listening/smelling), Interrogation (asking), and Palpation (touching/pulse-taking)." },
+    { ref: "[Point 43]", term: "Zhang Zhongjing", def: "The 'Medicine Sage' of the Eastern Han dynasty who wrote the 'Treatise on Cold Pathogenic and Miscellaneous Diseases'." },
+    { ref: "[Point 44]", term: "Liu Hui & Zu Chongzhi", def: "Liu Hui invented the cyclotomic method to calculate pi. Zu Chongzhi used it to calculate the most accurate value of pi in the ancient world." },
+    { ref: "[Point 45]", term: "Guo Shoujing & Shoushi Calendar", def: "A Yuan Dynasty astronomer who compiled the Shoushi Calendar, which was nearly identical to the modern Gregorian calendar but created 300 years earlier." },
+
+    // --- FOREIGN EXCHANGE & OPIUM WARS ---
+    { ref: "[Point 46]", term: "Marco Polo", def: "A 13th-century Venetian traveler who served in Kublai Khan's court (Yuan Dynasty) and introduced China to Europe through his book." },
+    { ref: "[Point 46]", term: "Matteo Ricci", def: "An Italian Jesuit missionary in the late Ming Dynasty who brought Western science to China and shared Chinese culture with Europe." },
+    { ref: "[Point 48]", term: "Hai Guo Tu Zhi (Illustrated Survey of Foreign Nations)", def: "Authored by Wei Yuan, it was the first significant Chinese work on the West, written as a response to the First Opium War." },
+    { ref: "[Point 50]", term: "Keju (Imperial Examination)", def: "Started in the Sui Dynasty to select officials via written exams (merit) rather than noble birth. It was abolished in 1905 due to rigid rules (eight-legged essays) stifling creativity." },
+    { ref: "[Point 53]", term: "First Opium War (1840-1842)", def: "Triggered by British opium smuggling. Resulted in the Treaty of Nanjing, opening ports, ceding Hong Kong, and making China a semi-colonial society." },
+    { ref: "[Point 53]", term: "Second Opium War (1856-1860)", def: "Anglo-French forces invaded and burned down the Old Summer Palace, forcing treaties that further damaged China's sovereignty." },
+
+    // --- MODERN SOCIETY, EDUCATION & POLITICS ---
+    { ref: "[Point 55]", term: "Double First-Class Initiative", def: "A modern government initiative (started in 2015) aiming to develop world-class universities and first-class academic disciplines by the end of 2050." },
+    { ref: "[Point 56]", term: "China's Political Party System", def: "A system of multi-party cooperation and political consultation under the leadership of the Communist Party of China (CPC), with eight democratic participating parties." },
+    { ref: "[Point 57]", term: "Advantages of Chinese Political System", def: "Practices whole-process people's democracy. Advantages include stable and long-term policy planning, efficient governance, and people-centered governance not influenced by capital/interest groups." },
+    { ref: "[Point 59]", term: "Five Principles of Peaceful Coexistence", def: "1) Mutual respect for territorial integrity/sovereignty, 2) Mutual non-aggression, 3) Non-interference in internal affairs, 4) Equality/mutual benefit, 5) Peaceful co-existence." },
+    { ref: "[Point 61]", term: "Chinese Modernization", def: "A development path featuring a huge population, common prosperity, balanced material/cultural progress, harmony with nature, and peaceful development." },
+    { ref: "[Point 62]", term: "Reform and Opening-up Policy", def: "Launched in 1978. 'Reform' broke the planned economy and introduced market mechanisms. 'Opening-up' opened coastal cities to attract foreign capital." },
+    { ref: "[Point 64]", term: "One Belt and One Road Initiative (BRI)", def: "A massive global infrastructure development strategy adopted in 2013 to connect Asia with Africa and Europe via land and maritime networks." },
+    { ref: "[Point 65]", term: "Community with a Shared Future for Mankind", def: "Proposed in 2013 by President Xi, it aims to balance legitimate concerns of other countries while pursuing common development, global interdependence, and world peace." },
+    { ref: "[Point 66]", term: "System of Regional Ethnic Autonomy", def: "A basic political system where ethnic minority communities establish autonomous organs to exercise self-governance rights under the unified leadership of the state." },
+    { ref: "[Point 67]", term: "Socialism with Chinese characteristics", def: "A development model combining scientific socialism with China’s specific national conditions, history, and reality, featuring CPC leadership and a socialist market economy." }
     ],
     exp: [
-        { ref: "[Point 1]", q: "What are the main characteristics of China’s terrain?", ans: "1) Diverse landforms: Includes mountains, plateaus, basins, plains, and hills. 2) 'Three-step' altitude gradient: High in the west (Qinghai-Tibet Plateau) and low in the east (plains/coastal areas). 3) Mountainous and plateau areas account for over 60% of the total land area." },
-        { ref: "[Point 9]", q: "Provide the basic facts of Sichuan province (Capital, Location, Dialect, Famous Mountains, and Wuhouci).", ans: "Capital: Chengdu. Location: Southwest China, upper Yangtze. Dialect: Sichuanese (Southwestern Mandarin). Mountains: Mount Emei (sacred Buddhist mountain). Wuhou Temple: A shrine in Chengdu dedicated to Zhuge Liang, a revered strategist from the Three Kingdoms period." },
-        { ref: "[Point 10]", q: "Compare the basic facts and core ideas of Confucius and Laozi.", ans: "Confucius (founder of Confucianism) advocated ruling by virtue, 'benevolence' (ren), 'propriety' (li), and harmony. Laozi (founder of Taoism) emphasized the 'Tao' (way of nature), 'non-action' (wu-wei), simplicity, humility, and harmony with nature." },
-        { ref: "[Point 15]", q: "Traditionally, what ideas are observed when planning buildings and architecture in China?", ans: "The ideas of 'harmony between humans and nature' and 'symmetry and balance'. This emphasizes alignment with natural surroundings, hierarchical layout along a north-south axis, and the integration of function with aesthetics." },
-        { ref: "[Point 22]", q: "What are the four essential elements of traditional Chinese painting?", ans: "1) Brushwork (笔), 2) Ink (墨), 3) Paper or Silk (纸), and 4) Color (彩)." },
-        { ref: "[Point 31]", q: "What were Qin Shi Huang's main contributions to Chinese history?", ans: "He was the first emperor to unify China in 221 BCE. He unified the country politically and culturally, standardized writing, currency, and measurements, and built the early Great Wall and road networks. His legacy includes the Terracotta Army and bronze chariots." },
-        { ref: "[Point 40]", q: "Name three important festivals in China and their typical customs.", ans: "1) Chinese New Year (Spring Festival): Family reunion dinner, red envelopes, fireworks. 2) Qingming Festival: Tomb-sweeping and spring outings. 3) Dragon Boat Festival: Eating zongzi and racing dragon boats. 4) Mid-Autumn Festival: Admiring the moon and eating mooncakes." },
-        { ref: "[Point 41]", q: "What are the main contributions of science and technology of China in history and today?", ans: "Ancient: The Four Great Inventions (Compass, gunpowder, papermaking, printing), plus silk and porcelain. Modern: 5G tech (Huawei), high-speed rail, e-commerce, space exploration (Lunar Chang'e, Tiangong station), and renewable energy infrastructure." },
-        { ref: "[Point 51]", q: "Explain the origin and functions of the Great Wall.", ans: "Origin: First built during the Spring/Autumn and Warring States periods, then unified and expanded by Qinshihuang. Functions: Military defense against nomadic invasions, border management (trade/population control), and a symbol of national unity." },
-        { ref: "[Point 52]", q: "Why did tea become the drink for scholar-officials in ancient China?", ans: "1) It has a refreshing effect that helps with reading and meditation. 2) Tea culture emphasizes elegance and tranquility, aligning with scholars' pursuit of moral integrity. 3) Tea ceremonies became a social activity to exchange ideas." },
-        { ref: "[Point 57]", q: "What are the advantages of the Chinese political system over the western style democracy system?", ans: "It focuses on overall national interests and long-term development (avoiding short-term political gains), allows for highly efficient decision-making (mobilizing resources for major projects), and provides full representation of people's interests through extensive political consultation." },
-        { ref: "[Point 60]", q: "What are China’s economic achievements after 1978 and the reasons behind them?", ans: "Achievements: Sustained ~9% annual growth, becoming the 2nd largest economy, massive poverty alleviation, and rapid infrastructure development. Reasons: The Reform and Opening-up policy, stable political environment, large labor force/market, and scientific macro-control by the government." },
-        { ref: "[Point 62]", q: "What is the 'Reform and Opening-up' policy of China?", ans: "Launched in 1978 by Deng Xiaoping. 'Reform' shifted the system from a planned economy to a socialist market economy. 'Opening-up' referred to opening coastal cities and regions to foreign investment, trade, and technology exchange." },
-        { ref: "[Point 69]", q: "How does the evolution of China’s family planning policy reflect the principles upheld by the government?", ans: "It evolved from the strict 'one-child' policy (1970s) to 'two-child' (2016) and 'three-child' (2021) to address the aging population. This reflects the principles of putting people first, adapting policies based on real national population changes, and pursuing long-term sustainable development." }
+        // --- ARCHITECTURE, ARTS & CULTURE ---
+    { ref: "[Point 15]", q: "Traditionally, when planning buildings and architecture, what three foundational principles are observed in China? Explain each.", ans: "1) Heaven-Human Unity (天人合一): Coexisting harmoniously with nature. 2) Central Axis Symmetry (中轴对称): Layout centers on a north-south axis with mirror-image balance (representing central respect and cosmic balance). 3) Ritual Hierarchy (礼制秩序): Architecture encodes social rank through strict design rules (roof style, color, column numbers)." },
+    { ref: "[Point 28]", q: "Identify the 'Poetry Sage' and the 'Poet Immortal' of the Tang Dynasty, and briefly describe their respective poetic styles.", ans: "1) Poetry Sage (Du Fu): Known for serious, patriotic poetry that meticulously recorded historical events and social realities. 2) Poet Immortal (Li Bai): Known for his heroic, romantic style, and bold, free-spirited imagination." },
+    { ref: "[Point 39]", q: "Name four important traditional festivals in China and list their typical customs.", ans: "1) Chinese New Year (Spring Festival): Family reunions, giving red envelopes, setting off firecrackers, eating dumplings. 2) Mid-Autumn Festival: Moon gazing, eating mooncakes. 3) Dragon Boat Festival: Racing dragon boats, eating Zongzi. 4) Qingming Festival (Tomb-Sweeping Day): Cleaning ancestors' tombs and honoring the dead." },
+    { ref: "[Point 52]", q: "Describe Chinese tea in terms of its history, classification by fermentation, and overall value.", ans: "History: Over 5,000 years, prospered in Tang/Song, perfected in Ming/Qing. Classification (by fermentation): Green (unfermented), White, Yellow, Oolong (semi), Black (fully), and Dark/Pu'er (post-fermented). Value: Health benefits, Cultural (ceremonies/harmony), and Economic (trade)." },
+
+    // --- SCIENCE, MATH & MEDICINE ---
+    { ref: "[Point 41]", q: "Outline China's science and technology progress today and analyze the main reasons behind this rapid advancement.", ans: "Progress: Global leadership in 5G telecommunications, high-speed rail, artificial intelligence, e-commerce, and space exploration (lunar/Mars missions). Reasons: Massive government investment in R&D, a strong emphasis on STEM education, policies opening up to global markets, and a vast domestic consumer market driving innovation." },
+    { ref: "[Point 42]", q: "In traditional Chinese medicine (TCM), what are the four diagnosis methods and the primary curing ways?", ans: "Four Diagnosis Methods: Observation (looking), Auscultation and Olfaction (listening and smelling), Interrogation (asking), and Palpation (touching/pulse-taking). Curing Ways: Acupuncture, herbal medicine, cupping, massage (Tui Na), and dietary therapy." },
+    { ref: "[Point 44]", q: "Name five famous ancient Chinese math achievements and the mathematicians associated with them.", ans: "1) The Nine Chapters on the Mathematical Art (compiled by Zhang Cang). 2) Cyclotomic method to calculate pi (invented by Liu Hui). 3) Calculating the most accurate value of pi in the ancient world (Zu Chongzhi). 4) Solving cubic equations (Wang Xiaotong). 5) The Chinese Remainder Theorem (Qin Jiushao)." },
+
+    // --- HISTORY, EXAMS & OPIUM WARS ---
+    { ref: "[Point 47]", q: "Why was Catholicism in China prohibited in the late-Ming dynasty (the 1616 Nanjing Incident)? Provide the four main reasons.", ans: "1) Cultural/Ethical conflict (clashes with Confucian ancestor worship). 2) Political/Security concerns (fears of rebellion and collusion with foreign powers). 3) Intellectual/Ritual opposition (resistance to Western scientific methods and perceived heresy). 4) Social backlash (local conflicts over land and religious practices)." },
+    { ref: "[Point 50]", q: "Describe the Imperial Examination (Keju) system, including its origin, merits, and demerits.", ans: "Origin: Started in the Sui Dynasty (605 AD) to select officials through written exams rather than noble birth. Merits: Provided fair social mobility, stable governance, and cultural unity. Demerits: Limited to Confucian classics, used rigid writing rules (eight-legged essays) which stifled creativity and caused social conservatism. It was abolished in 1905." },
+    { ref: "[Point 51]", q: "Explain the origin and historical functions of the Great Wall of China.", ans: "Origin: Started in the Warring States Period, unified by Qin Shi Huang, with current structures mostly dating back to the Ming Dynasty. Functions: Military defense against northern invasions, border governance, economic protection (for the Silk Road), and cultural division/communication." },
+    { ref: "[Point 53]", q: "What were the First and Second Opium Wars, and what were their specific consequences for China?", ans: "First Opium War (1840-1842): Britain smuggled opium into China. Resulted in the Treaty of Nanjing; China opened ports, ceded Hong Kong, and became a semi-colonial society. Second Opium War (1856-1860): Anglo-French forces invaded, burning the Old Summer Palace. Resulted in treaties opening more cities to foreign trade and further damaging China's sovereignty." },
+
+    // --- POLITICS, GOVERNANCE & SOCIETY ---
+    { ref: "[Point 56]", q: "Describe the name, characteristics, and advantages of the political party system of China.", ans: "Name: The system of multi-party cooperation and political consultation under the leadership of the Communist Party of China. Characteristics: The CPC is the ruling party; eight democratic parties are participating (not opposing) parties, focusing on cooperation. Advantages: Long-term political stability, high governance efficiency, broad representation, social harmony, and people-oriented development." },
+    { ref: "[Point 57]", q: "What are the advantages of the Chinese political system over the western-style democracy system as outlined in the study guide?", ans: "China practices whole-process people’s democracy. Advantages include: stable and long-term policy planning (no short-term election-driven policies), efficient governance/unified mobilization, people-centered governance (not influenced by capital/interest groups), maintaining national unity/social stability, and reducing unnecessary partisan strife." },
+    { ref: "[Point 58]", q: "What specific environmental protection measures have been taken in China?", ans: "Strict laws and rules, pollution control (cutting smog, cleaning rivers), ecological protection and restoration (planting forests), green/low-carbon development (wind/solar/hydro energy), and international cooperation on climate." },
+    { ref: "[Point 60]", q: "What are China’s economic achievements after 1978, and what are the main reasons behind this success?", ans: "Achievements: World's second-largest economy, largest manufacturing country, eliminated extreme poverty, and built advanced infrastructure (high-speed rail). Reasons: The Reform and Opening-up policy, market-oriented reforms, social stability, introduction of foreign capital, rich labor resources, and continuous investment." },
+    { ref: "[Point 61]", q: "What is 'Chinese modernization' and what are its key features?", ans: "It is a unique development path suited to China’s national conditions. Features include: modernization of a huge population, common prosperity for all, balanced material and cultural progress, harmonious coexistence with nature, and peaceful development. (It provides lessons but is not fully copyable by others)." },
+    { ref: "[Point 62]", q: "Explain the 'Reform and Opening-up' policy of China, breaking down what 'domestic reform' and 'opening to the outside world' specifically involved.", ans: "Launched in 1978. 'Domestic reform' broke the rigid planned economy and introduced market mechanisms (starting in rural areas). 'Opening to the outside world' involved opening coastal cities and attracting foreign capital. The ultimate goal was to improve living standards and realize national modernization." },
+    { ref: "[Point 68]", q: "What contributions has China made to maintain world peace?", ans: "Adhering to a peaceful foreign policy, actively participating in UN peacekeeping, settling disputes through dialogue, pursuing peaceful development (no expansion), fighting global threats, promoting common development, and advocating fair global governance." },
+    { ref: "[Point 69]", q: "Describe the evolution of China’s family planning policy from 1982 to 2021 and the principles it upholds.", ans: "Evolution: Began as a basic state policy in 1982 to control population (late marriage, fewer births) and evolved to the 2021 policy allowing three children to address aging demographics. Principles upheld: People-centered philosophy, seeking truth from facts, respecting objective laws, balanced development, and pragmatic governance." },
+    
+    // --- ESSAY FRAMEWORK ---
+    { ref: "[Point 70]", q: "Based on the study guide framework, how would you answer the essay question: 'Which aspect of China do you find most impressive?'", ans: "A strong framework focuses on China's rapid infrastructural and technological development over the last four decades. Key points: Moving from an agrarian society to a global leader in high-speed rail and 5G, unprecedented poverty eradication in a short historical timeframe, and the unique ability to modernize megacities while simultaneously preserving 5,000 years of rich cultural traditions and festivals." }
         
     ]
 };
